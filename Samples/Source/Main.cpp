@@ -1,3 +1,5 @@
+#include "Synergon/Engine.hpp"
+#include "Synergon/ThirdParty.hpp"
 #include <Synergon/Samples.hpp>
 
 int main(int argc, char **argv) {

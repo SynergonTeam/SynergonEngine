@@ -45,6 +45,7 @@ _deps
 CMakeUserPresets.json
 
 .vscode/
+.idea
 
 build/
 build-release/

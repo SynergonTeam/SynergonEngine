@@ -6,6 +6,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 if(MSVC)
 else()
     if(NOT DEFINED CMAKE_BUILD_TYPE)
@@ -76,4 +78,9 @@ else()
     add_compile_options(-Wno-nullability-completeness)
 endif()
 
-add_subdirectory(Modules)
+add_subdirectory(ThirdParty)
+add_subdirectory(Engine)
+
+if(NOT WITHOUT_SAMPLES)
+    add_subdirectory(Samples)
+endif()

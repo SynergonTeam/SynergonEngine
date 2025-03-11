@@ -16,6 +16,9 @@
     ```sh
     vcpkg install glfw3
     ```
+   ```sh
+    vcpkg install gtest
+    ```
 
 2. Set the `VCPKG_CMAKE` environment variable:
     - **Windows**:

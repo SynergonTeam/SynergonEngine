@@ -4,6 +4,7 @@ project(SynergonEngineThirdParty)
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(Vulkan REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 file(GLOB_RECURSE SYNERGON_ENGINE_THIRD_PARTY_INCLUDE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.hpp
@@ -31,4 +32,5 @@ target_include_directories(SynergonEngineThirdParty PUBLIC
 target_link_libraries(SynergonEngineThirdParty PUBLIC
     glfw
     Vulkan::Vulkan
+    GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main
 )
