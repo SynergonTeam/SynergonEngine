@@ -3,28 +3,31 @@
 ## Prerequisites
 
 1. **CMake**: Version 3.20 or higher.
-2. **Vulkan SDK**: Install Vulkan SDK and check the support for Vulkan 1.3
-3. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
-4. **Compiler**:
+2. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
+3. **Compiler**:
     - **Windows**: Visual Studio (MSVC), GCC, CLANG
     - **Linux**: GCC, Clang
     - **Unix**: Makefiles, Ninja
 
 ## Setting Up vcpkg
 
-1. Create the vcpkg toolchain file for cmake:
-    ```sh
-    vcpkg integrate install
-    ```
-2. Set the `VCPKG_CMAKE` environment variable ([vcpkg.json](vcpkg.json) will automatically install the packages, no need to manually install):
+1. Install dependencies using [vcpkg](https://github.com/microsoft/vcpkg.git):
 
+    ```sh
+    vcpkg install glfw3
+    ```
+   ```sh
+    vcpkg install gtest
+    ```
+
+2. Set the `VCPKG_CMAKE` environment variable:
     - **Windows**:
         ```bat
-        SETX VCPKG_CMAKE=<C:\path\to\vcpkg>\scripts\buildsystems\vcpkg.cmake
+        SETX VCPKG_CMAKE=C:\path\to\vcpkg\scripts\buildsystems\vcpkg.cmake
         ```
     - **Linux**:
         ```sh
-        export VCPKG_CMAKE=</path/to/vcpkg>/scripts/buildsystems/vcpkg.cmake
+        export VCPKG_CMAKE=/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
         ```
 
 ## Building the Project
@@ -54,7 +57,7 @@
     mkdir Build
     cd Build
     ```
-3. Configure the project using CMake (Ninja/Unix Makefiles and clang/g++):
+3. Configure the project using CMake (Ninja/Unix Makefiles and clang/gcc):
     ```bat
     cmake -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=clang ..
     ```
@@ -132,6 +135,7 @@
     ```
 
 ## Build Options
+
 
 ### Common
 

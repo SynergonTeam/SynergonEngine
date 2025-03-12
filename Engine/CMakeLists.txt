@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
+add_subdirectory(Modules)
+
 project(SynergonEngine LANGUAGES CXX VERSION 0.0.1)
 
 file(GLOB_RECURSE SYNERGON_ENGINE_INCLUDE_FILES
@@ -35,6 +37,8 @@ target_include_directories(SynergonEngine PUBLIC
 )
 
 target_link_libraries(SynergonEngine PUBLIC
+        SynergonCore
+        SynergonGfxr
         SynergonEngineThirdParty
 )
 

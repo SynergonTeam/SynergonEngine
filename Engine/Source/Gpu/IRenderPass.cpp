@@ -1,1 +1,0 @@
-#include <Synergon/Gpu/IRenderPass.hpp>

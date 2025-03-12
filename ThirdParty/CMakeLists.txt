@@ -34,5 +34,3 @@ target_link_libraries(SynergonEngineThirdParty PUBLIC
     Vulkan::Vulkan
     GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main
 )
-
-set_property(TARGET SynergonEngineThirdParty PROPERTY FOLDER "Engine")
