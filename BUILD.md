@@ -3,21 +3,19 @@
 ## Prerequisites
 
 1. **CMake**: Version 3.20 or higher.
-2. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
-3. **Compiler**:
+2. **Vulkan SDK**: API Version 1.3
+3. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
+4. **Compiler**:
     - **Windows**: Visual Studio (MSVC), GCC, CLANG
     - **Linux**: GCC, Clang
     - **Unix**: Makefiles, Ninja
 
 ## Setting Up vcpkg
 
-1. Install dependencies using [vcpkg](https://github.com/microsoft/vcpkg.git):
+1. Create the vcpkg toolchain file for CMake:
 
     ```sh
-    vcpkg install glfw3
-    ```
-   ```sh
-    vcpkg install gtest
+    vcpkg integrate install
     ```
 
 2. Set the `VCPKG_CMAKE` environment variable:
@@ -57,7 +55,7 @@
     mkdir Build
     cd Build
     ```
-3. Configure the project using CMake (Ninja/Unix Makefiles and clang/gcc):
+3. Configure the project using CMake (Ninja/Unix Makefiles and clang/g++):
     ```bat
     cmake -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=clang ..
     ```
