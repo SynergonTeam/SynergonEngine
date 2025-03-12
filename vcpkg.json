@@ -1,0 +1,9 @@
+{
+    "name": "synergon-engine",
+    "version": "0.0.1",
+    "dependencies": [
+        "glfw3",
+        
+        "gtest"
+    ]
+}

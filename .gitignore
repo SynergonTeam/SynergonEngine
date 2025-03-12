@@ -45,7 +45,8 @@ _deps
 CMakeUserPresets.json
 
 .vscode/
-.idea
+.idea/
+vcpkg_installed/
 
 build/
 build-release/
@@ -55,6 +56,10 @@ build-ninja/
 build-ninja-release/
 build-ninja-shared/
 build-ninja-shared-release/
+build-unix/
+build-unix-release/
+build-unix-shared/
+build-unix-shared-release/
 build-gnu/
 build-gnu-release/
 build-gnu-shared/
@@ -68,6 +73,10 @@ Build-Ninja/
 Build-Ninja-Release/
 Build-Ninja-Shared/
 Build-Ninja-Shared-Release/
+Build-Unix/
+Build-Unix-Release/
+Build-Unix-Shared/
+Build-Unix-Shared-Release/
 Build-Gnu/
 Build-Gnu-Release/
 Build-Gnu-Shared/

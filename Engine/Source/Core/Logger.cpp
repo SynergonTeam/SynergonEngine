@@ -1,0 +1,1 @@
+#include <Synergon/Core/Logger.hpp>
