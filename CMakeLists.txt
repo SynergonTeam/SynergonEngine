@@ -78,6 +78,10 @@ else()
     add_compile_options(-Wno-nullability-completeness)
 endif()
 
+find_package(Vulkan REQUIRED)
+find_package(GTest CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+
 add_subdirectory(ThirdParty)
 add_subdirectory(Engine)
 
