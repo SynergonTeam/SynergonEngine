@@ -1,9 +1,9 @@
 #ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
 #define SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
 
-#include "Synergon/Rhi/Descriptors/ShaderDescriptor.hpp"
-#include "Synergon/Rhi/IPipelineLayout.hpp"
 #include "Synergon/Rhi/Enums.hpp"
+#include "Synergon/Rhi/IShader.hpp"
+#include "Synergon/Rhi/IPipelineLayout.hpp"
 
 #include <memory>
 #include <optional>
@@ -32,19 +32,22 @@ namespace Synergon::Rhi {
 	};
 
 	struct VertexInputLayout {
-		VertexStepMode				stepMode{};
-		uint64_t					arrayStride{};
-		std::span<VertexAttribute>	attributes;
+		VertexStepMode stepMode = VertexStepMode::eVertex;
+
+		uint64_t                   arrayStride;
+		std::span<VertexAttribute> attributes;
 	};
 
 	struct RasterizerState {
-		PrimitiveTopology 	topology =	PrimitiveTopology::eTriangleList;
-		PolygoneMode polygonMode =		PolygoneMode::eFill;
-		CullMode cullMode =				CullMode::eNone;
-		FrontFace frontFace =			FrontFace::eClockWise;
+		PrimitiveTopology topology    = PrimitiveTopology::eTriangleList;
+		PolygoneMode      polygonMode = PolygoneMode::eFill;
+		CullMode          cullMode    = CullMode::eNone;
+		FrontFace         frontFace   = FrontFace::eCounterClockWise;
 	};
 
 	struct ColorBlendState {
+		bool blendEnable = false;
+
 		BlendComponent color;
 		BlendComponent alpha;
 	};
@@ -52,46 +55,51 @@ namespace Synergon::Rhi {
 	struct DepthStencilState {
 		TextureFormat format;
 
-		bool  depthTestEnable;
-		bool  depthWriteEnable;
-		float minDepthBounds;
-		float maxDepthBounds;
+		bool  depthTestEnable  = true;
+		bool  depthWriteEnable = true;
+		float minDepthBounds   = 0.0f;
+		float maxDepthBounds   = 1.0f;
 
-		CompareOp depthCompareOp;
+		CompareOp depthCompareOp = CompareOp::eLess;
 
-		bool     stencilTestEnable;
-		uint32_t stencilReadMask;
-		uint32_t stencilWriteMask;
+		bool     stencilTestEnable = false;
+		uint32_t stencilReadMask   = 0xFF;
+		uint32_t stencilWriteMask  = 0xFF;
 
 		StencilFaceState front;
 		StencilFaceState back;
 	};
 
 	struct MultisampleState {
-		SampleCount sampleCount;
-		bool        alphaToCoverage;
+		SampleCount sampleCount     = SampleCount::e1;
+		bool        alphaToCoverage = false;
+	};
+
+	struct ShaderModule {
+		std::shared_ptr<IShader> shader;
+		std::string              entryPoint;
 	};
 
 	struct RasterizerPipelineDescriptor {
 		std::shared_ptr<IPipelineLayout> layout;
-		std::span<VertexInputLayout> inputLayouts;
+		std::span<VertexInputLayout>     inputLayouts;
 
-		ShaderDescriptor fragmentShaderDescriptor;
-		ShaderDescriptor vertexShaderDescriptor;
-
-		std::span<TextureFormat> colorAttachmentFormats;
-		std::optional<DepthStencilState> depthStencil;
+		ShaderModule vertexShaderModule;
+		ShaderModule fragmentShaderModule;
 
 		RasterizerState  rasterizer;
 		ColorBlendState  colorBlend;
 		MultisampleState multisample;
+
+		std::span<TextureFormat>         colorAttachmentFormats;
+		std::optional<DepthStencilState> depthStencil;
 	};
 
 	struct ComputePipelineDescriptor {
 		std::shared_ptr<IPipelineLayout> layout;
-		ShaderDescriptor computeShaderDescriptor;
+		ShaderModule                     shaderModule;
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
+#endif  // #ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP

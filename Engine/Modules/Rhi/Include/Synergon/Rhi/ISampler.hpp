@@ -4,10 +4,10 @@
 namespace Synergon::Rhi {
 
 	class ISampler {
-	public:
-	private:
+	   public:
+		virtual ~ISampler() = default;
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_ISAMPLER_HPP
+#endif  // SYNERGON_RHI_ISAMPLER_HPP

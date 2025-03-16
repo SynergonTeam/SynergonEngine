@@ -6,9 +6,9 @@
 namespace Synergon::Rhi {
 
 	class IBuffer {
-	public:
-	private:
+	   public:
+		virtual ~IBuffer() = default;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_IBUFFER_HPP
+#endif  // #ifndef SYNERGON_RHI_IBUFFER_HPP

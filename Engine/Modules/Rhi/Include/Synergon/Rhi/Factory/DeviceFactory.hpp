@@ -7,7 +7,6 @@
 #include <functional>
 
 namespace Synergon::Rhi {
-
 	enum class ApiChoice {
 		eDirectx12,
 		eVulkan,
@@ -17,16 +16,13 @@ namespace Synergon::Rhi {
 	using DeviceFactoryFunc = std::function<std::unique_ptr<IDevice>()>;
 
 	class DeviceFactory {
-	public:
+	   public:
 		static std::unique_ptr<IDevice> createDevice(ApiChoice choice, const DeviceFactoryFunc &customFactoryFunction = nullptr);
-	private:
+
+	   private:
 		DeviceFactory() = default;
 	};
 
+}  // namespace Synergon::Rhi
 
-}
-
-
-
-
-#endif //SYNERGON_RHI_DEVICEFACTORY_HPP
+#endif  // SYNERGON_RHI_DEVICEFACTORY_HPP

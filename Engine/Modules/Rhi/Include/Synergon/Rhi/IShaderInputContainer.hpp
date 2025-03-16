@@ -1,16 +1,12 @@
 #ifndef SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP
 #define SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP
 
-
-namespace Synergon::Rhi
-{
+namespace Synergon::Rhi {
 	class IShaderInputContainer {
-	public:
+	   public:
 		virtual ~IShaderInputContainer() = default;
-
-	private:
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP
+#endif  // SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP

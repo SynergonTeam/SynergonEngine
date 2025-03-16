@@ -3,14 +3,12 @@
 
 #include "Synergon/Rhi/IShaderInputContainer.hpp"
 
-namespace Synergon::Rhi
-{
+namespace Synergon::Rhi {
 	class Dx12ShaderInputContainer final : public IShaderInputContainer {
-	public:
-
-	private:
+	   public:
+	   private:
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_DX12SHADERINPUTCONTAINER_HPP
+#endif  // SYNERGON_RHI_DX12SHADERINPUTCONTAINER_HPP

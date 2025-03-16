@@ -290,11 +290,11 @@ namespace Synergon::Rhi {
 	};
 
 	enum class CommandType {
-		Graphics =	0,
-		Compute =	1,
-		Copy =		2,
-		Bundle =	3,
+		Graphics = 0,
+		Compute  = 1,
+		Copy     = 2,
+		Bundle   = 3,
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_ENUMS_HPP
+#endif  // SYNERGON_RHI_ENUMS_HPP

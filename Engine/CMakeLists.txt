@@ -39,7 +39,8 @@ target_include_directories(SynergonEngine PUBLIC
 
 target_link_libraries(SynergonEngine PUBLIC
         SynergonCore
-        SynergonGfxr
+        SynergonRhi
+        SynergonRpi
 )
 
 set_property(TARGET SynergonEngine PROPERTY FOLDER "Engine")

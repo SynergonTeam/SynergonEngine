@@ -3,8 +3,8 @@
 
 namespace Synergon::Rhi {
 	struct FenceDescriptor {
-
+		bool signaled = false;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_FENCEDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_FENCEDESCRIPTOR_HPP

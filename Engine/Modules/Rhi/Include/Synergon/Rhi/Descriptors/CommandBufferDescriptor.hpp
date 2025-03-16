@@ -1,12 +1,12 @@
-#ifndef SYNERGON_PHI_COMMANDBUFFERDESCRIPTOR_HPP
-#define SYNERGON_PHI_COMMANDBUFFERDESCRIPTOR_HPP
+#ifndef SYNERGON_RHI_COMMANDBUFFERDESCRIPTOR_HPP
+#define SYNERGON_RHI_COMMANDBUFFERDESCRIPTOR_HPP
 
 #include "Synergon/Rhi/Enums.hpp"
 
 namespace Synergon::Rhi {
-    struct CommandBufferDescriptor {
-        CommandType type;
-    };
-}
+	struct CommandBufferDescriptor {
+		bool oneTimeSubmit = true;
+	};
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_PHI_COMMANDBUFFERDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_COMMANDBUFFERDESCRIPTOR_HPP

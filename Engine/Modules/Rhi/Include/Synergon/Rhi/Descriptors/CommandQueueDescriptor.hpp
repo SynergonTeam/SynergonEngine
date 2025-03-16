@@ -7,6 +7,6 @@ namespace Synergon::Rhi {
 	struct CommandQueueDescriptor {
 		CommandType commandBufferType;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_COMMANDQUEUEDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_COMMANDQUEUEDESCRIPTOR_HPP

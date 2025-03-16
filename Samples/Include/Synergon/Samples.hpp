@@ -5,4 +5,4 @@ namespace Synergon {
 	void SamplesTempFunction();
 }  // namespace Synergon
 
-#endif //SYNERGON_SAMPLES_HPP
+#endif  // SYNERGON_SAMPLES_HPP

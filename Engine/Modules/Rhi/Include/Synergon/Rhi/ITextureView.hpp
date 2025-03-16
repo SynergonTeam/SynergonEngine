@@ -3,9 +3,9 @@
 
 namespace Synergon::Rhi {
 	class ITextureView {
-	public:
-	private:
+	   public:
+		virtual ~ITextureView() = default;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_ITEXTUREVIEW_HPP
+#endif  // SYNERGON_RHI_ITEXTUREVIEW_HPP

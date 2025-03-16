@@ -4,11 +4,9 @@
 
 namespace Synergon::Rhi {
 	Dx12Device::Dx12Device() {
-
 	}
 
-	Dx12Device::~Dx12Device(){
-
+	Dx12Device::~Dx12Device() {
 	}
 
 	std::unique_ptr<IDisplay> Dx12Device::createDisplay(const DisplayDescriptor& descriptor) {
@@ -27,7 +25,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented");
 	}
 
-	std::shared_ptr<ITextureView> Dx12Device::createTextureView(const TextureViewDescriptor &descriptor) {
+	std::shared_ptr<ITextureView> Dx12Device::createTextureView(const TextureViewDescriptor& descriptor) {
 		throw std::logic_error("Not implemented");
 	}
 
@@ -51,7 +49,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented");
 	}
 
-	std::unique_ptr<IFence> Dx12Device::createFence(const FenceDescriptor &descriptor){
+	std::unique_ptr<IFence> Dx12Device::createFence(const FenceDescriptor& descriptor) {
 		throw std::logic_error("Not implemented");
 	}
 
@@ -63,4 +61,4 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented");
 	}
 
-}
+}  // namespace Synergon::Rhi

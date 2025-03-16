@@ -5,9 +5,9 @@
 
 namespace Synergon::Rhi {
 	class Dx12TextureView : public ITextureView {
-	public:
-	private:
+	   public:
+	   private:
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_DX12TEXTUREVIEW_HPP
+#endif  // SYNERGON_RHI_DX12TEXTUREVIEW_HPP

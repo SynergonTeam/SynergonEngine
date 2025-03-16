@@ -5,8 +5,8 @@
 
 namespace Synergon::Rhi {
 	struct CommandAllocatorDescriptor {
-		CommandType type;
+		CommandType commandBufferType;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_COMMANDALLOCATORDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_COMMANDALLOCATORDESCRIPTOR_HPP

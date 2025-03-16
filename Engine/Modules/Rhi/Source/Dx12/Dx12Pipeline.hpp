@@ -5,11 +5,10 @@
 
 namespace Synergon::Rhi {
 	class Dx12Pipeline : public IPipeline {
-	public:
-	private:
-
+	   public:
+	   private:
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_DX12PIPELINE_HPP
+#endif  // #ifndef SYNERGON_RHI_DX12PIPELINE_HPP

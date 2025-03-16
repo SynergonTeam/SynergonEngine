@@ -3,10 +3,9 @@
 
 namespace Synergon::Rhi {
 	class ITexture {
-	public:
-
-	private:
+	   public:
+		virtual ~ITexture() = default;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_ITEXTURE_HPP
+#endif  // #ifndef SYNERGON_RHI_ITEXTURE_HPP

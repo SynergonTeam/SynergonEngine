@@ -5,20 +5,20 @@
 
 namespace Synergon::Rhi {
 	struct SamplerDescriptor {
-		AddressMode addressModeU{};
-		AddressMode addressModeV{};
-		AddressMode addressModeW{};
+		AddressMode addressModeU = AddressMode::eRepeat;
+		AddressMode addressModeV = AddressMode::eRepeat;
+		AddressMode addressModeW = AddressMode::eRepeat;
 
-		Filter minFilter{};
-		Filter magFilter{};
-		Filter mipMapFilter{};
+		Filter minFilter    = Filter::eLinear;
+		Filter magFilter    = Filter::eLinear;
+		Filter mipMapFilter = Filter::eLinear;
 
-		CompareOp compareOp{};
+		CompareOp compareOp = CompareOp::eNever;
 
 		float    lodMinClamp   = 0.0f;
 		float    lodMaxClamp   = 32.0f;
-		uint16_t maxAnisotropy = 1;
+		uint16_t maxAnisotropy = 1u;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_SAMPLERDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_SAMPLERDESCRIPTOR_HPP

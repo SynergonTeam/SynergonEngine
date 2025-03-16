@@ -5,11 +5,11 @@
 
 namespace Synergon::Rhi {
 
-	class Dx12Sampler : public ISampler{
-	public:
-	private:
+	class Dx12Sampler : public ISampler {
+	   public:
+	   private:
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_DX12SAMPLER_HPP
+#endif  // SYNERGON_RHI_DX12SAMPLER_HPP

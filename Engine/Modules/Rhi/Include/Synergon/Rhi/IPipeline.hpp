@@ -3,10 +3,10 @@
 
 namespace Synergon::Rhi {
 	class IPipeline {
-	public:
-
+	   public:
+		virtual ~IPipeline() = default;
 	};
 
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_IPIPELINE_HPP
+#endif  // #ifndef SYNERGON_RHI_IPIPELINE_HPP

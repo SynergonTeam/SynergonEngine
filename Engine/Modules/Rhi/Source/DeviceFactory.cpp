@@ -4,13 +4,12 @@
 
 namespace Synergon::Rhi {
 
-	std::unique_ptr<IDevice> DeviceFactory::createDevice(const ApiChoice choice,  const DeviceFactoryFunc &customFactoryFunction){
-		switch (choice){
+	std::unique_ptr<IDevice> DeviceFactory::createDevice(const ApiChoice choice, const DeviceFactoryFunc &customFactoryFunction) {
+		switch (choice) {
 			case ApiChoice::eDirectx12: {
 				return CreateDx12Device();
 			}
 			case ApiChoice::eVulkan: {
-
 			}
 			case ApiChoice::eCustom: {
 				if (customFactoryFunction == nullptr) {
@@ -19,9 +18,9 @@ namespace Synergon::Rhi {
 				}
 				return customFactoryFunction();
 			}
-			default: ;
+			default:;
 		}
 
 		return nullptr;
 	}
-}
+}  // namespace Synergon::Rhi

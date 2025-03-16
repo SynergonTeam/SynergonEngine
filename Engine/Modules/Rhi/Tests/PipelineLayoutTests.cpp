@@ -2,8 +2,8 @@
 
 namespace Synergon::Rhi {
 	TEST_P(PipelineLayoutTest, DefaultConstruction) {
-		const std::string apiName = GetParam();
-		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
+		const std::string              apiName = GetParam();
+		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
 		constexpr PipelineLayoutDescriptor pipelineLayoutDescriptor{};
 
@@ -11,6 +11,6 @@ namespace Synergon::Rhi {
 	}
 
 	INSTANTIATE_TEST_SUITE_P(
-	ApiChoice, PipelineLayoutTest,
-	::testing::Values("Vulkan", "Directx12"));
-}
+	    ApiChoice, PipelineLayoutTest,
+	    ::testing::Values("Vulkan", "Directx12"));
+}  // namespace Synergon::Rhi

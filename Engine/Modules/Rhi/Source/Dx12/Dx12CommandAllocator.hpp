@@ -8,10 +8,11 @@
 
 namespace Synergon::Rhi {
 	class Dx12CommandAllocator final : public ICommandAllocator {
-	public:
+	   public:
 		std::unique_ptr<ICommandBuffer> allocateCommandBuffer(CommandBufferDescriptor descriptor) override;
-	private:
-	};
-}
 
-#endif // SYNERGON_RHI_DX12COMMANDALLOCATOR_HPP
+	   private:
+	};
+}  // namespace Synergon::Rhi
+
+#endif  // SYNERGON_RHI_DX12COMMANDALLOCATOR_HPP

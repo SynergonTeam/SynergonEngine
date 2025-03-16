@@ -7,6 +7,6 @@ namespace Synergon::Rhi {
 	struct ShaderInputContainerDescriptor {
 		std::shared_ptr<IShaderInputLayout> layout;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_SHADERINPUTCONTAINERDESCRIPTOR_HPP
+#endif  // SYNERGON_RHI_SHADERINPUTCONTAINERDESCRIPTOR_HPP

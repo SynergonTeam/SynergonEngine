@@ -3,14 +3,11 @@
 
 #include "Synergon/Rhi/IPipelineLayout.hpp"
 
-namespace Synergon::Rhi
-{
+namespace Synergon::Rhi {
 	class Dx12PipelineLayout : public IPipelineLayout {
-	public:
-
-	private:
-
+	   public:
+	   private:
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_DX12PIPELINELAYOUT_HPP
+#endif  // #ifndef SYNERGON_RHI_DX12PIPELINELAYOUT_HPP

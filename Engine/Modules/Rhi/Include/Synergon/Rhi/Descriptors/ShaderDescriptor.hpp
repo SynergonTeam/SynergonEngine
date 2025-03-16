@@ -1,15 +1,14 @@
-#ifndef SYNERGON_RHI_ISHADER_HPP
-#define SYNERGON_RHI_ISHADER_HPP
+#ifndef SYNERGON_RHI_SHADERDESCRIPTOR_HPP
+#define SYNERGON_RHI_SHADERDESCRIPTOR_HPP
 
 #include <cstdint>
 #include <string>
 
 namespace Synergon::Rhi {
 	struct ShaderDescriptor {
-		std::string	entryPoint;
-		const void* data;
-		uint32_t size;
+		std::string_view data;
+		uint64_t         size;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //#ifndef SYNERGON_RHI_ISHADER_HPP
+#endif  // #ifndef SYNERGON_RHI_ISHADER_HPP

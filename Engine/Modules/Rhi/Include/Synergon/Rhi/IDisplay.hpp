@@ -3,10 +3,9 @@
 
 namespace Synergon::Rhi {
 	class IDisplay {
-	public:
+	   public:
 		virtual ~IDisplay() = default;
-
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif//#ifndef SYNERGON_RHI_IDISPLAY_HPP
+#endif  // #ifndef SYNERGON_RHI_IDISPLAY_HPP

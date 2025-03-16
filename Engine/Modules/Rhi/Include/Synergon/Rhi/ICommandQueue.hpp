@@ -3,8 +3,9 @@
 
 namespace Synergon::Rhi {
 	class ICommandQueue {
-
+	   public:
+		virtual ~ICommandQueue() = default;
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif // SYNERGON_RHI_ICOMMANDQUEUE_HPP
+#endif  // SYNERGON_RHI_ICOMMANDQUEUE_HPP

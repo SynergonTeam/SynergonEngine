@@ -3,8 +3,7 @@
 
 #include <string>
 
-namespace Synergon::Core
-{
+namespace Synergon::Core {
 
 }
 

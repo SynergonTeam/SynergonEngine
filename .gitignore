@@ -75,3 +75,6 @@ Build-Gnu-Shared/
 Build-Gnu-Shared-Release/
 
 imgui.ini
+
+cmake-build-debug/
+cmake-build-release/

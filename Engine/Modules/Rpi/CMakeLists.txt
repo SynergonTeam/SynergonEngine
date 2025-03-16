@@ -41,7 +41,7 @@ target_include_directories(SynergonRpi PUBLIC
 )
 
 target_link_libraries(SynergonRpi PRIVATE
-        SynergonGfx
+        SynergonRhi
 )
 
 set_property(TARGET SynergonRpi PROPERTY FOLDER "Engine/Modules")

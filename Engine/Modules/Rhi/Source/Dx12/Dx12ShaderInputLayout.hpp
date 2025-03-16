@@ -5,8 +5,7 @@
 
 namespace Synergon::Rhi {
 	class Dx12ShaderInputLayout : public IShaderInputLayout {
-
 	};
-}
+}  // namespace Synergon::Rhi
 
-#endif //SYNERGON_RHI_DX12SHADERINPUTLAYOUT_HPP
+#endif  // SYNERGON_RHI_DX12SHADERINPUTLAYOUT_HPP
