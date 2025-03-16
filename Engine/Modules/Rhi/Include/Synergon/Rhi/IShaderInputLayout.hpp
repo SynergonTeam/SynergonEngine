@@ -1,0 +1,10 @@
+#ifndef SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP
+#define SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP
+
+namespace Synergon::Rhi {
+	class IShaderInputLayout {
+
+	};
+}
+
+#endif //SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP

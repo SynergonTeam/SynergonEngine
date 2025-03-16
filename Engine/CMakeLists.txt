@@ -4,6 +4,7 @@ add_subdirectory(Modules)
 
 project(SynergonEngine LANGUAGES CXX VERSION 0.0.1)
 
+
 file(GLOB_RECURSE SYNERGON_ENGINE_INCLUDE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Include/*.h
@@ -39,7 +40,6 @@ target_include_directories(SynergonEngine PUBLIC
 target_link_libraries(SynergonEngine PUBLIC
         SynergonCore
         SynergonGfxr
-        SynergonEngineThirdParty
 )
 
 set_property(TARGET SynergonEngine PROPERTY FOLDER "Engine")

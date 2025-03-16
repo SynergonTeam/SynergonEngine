@@ -32,8 +32,4 @@ target_include_directories(SynergonCore PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
-target_link_libraries(SynergonCore PUBLIC
-        SynergonEngineThirdParty
-)
-
 set_property(TARGET SynergonCore PROPERTY FOLDER "Engine/Modules")
