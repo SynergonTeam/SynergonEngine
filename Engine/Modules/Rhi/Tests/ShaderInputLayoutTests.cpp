@@ -1,10 +1,9 @@
-#include "Synergon/Rhi/Factory/DeviceFactory.hpp"
-
-#include <gtest/gtest.h>
+#include "TestClasses.hpp"
 
 namespace Synergon::Rhi {
-    TEST(Dx12ShaderInputLayout, DefaultConstruction) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(ShaderInputLayoutTest, DefaultConstruction) {
+        const std::string apiName = GetParam();
+        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         std::vector<ShaderInputLayoutEntry> inputEntry {
             {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderInputType::eStorageBuffer}
@@ -16,8 +15,9 @@ namespace Synergon::Rhi {
         ASSERT_NO_THROW(auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor));
     }
 
-    TEST(Dx12ShaderInputLayout, EmptyConstruction) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(ShaderInputLayoutTest, EmptyConstruction) {
+        const std::string apiName = GetParam();
+        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         std::vector<ShaderInputLayoutEntry> inputEntry {
         };
@@ -27,4 +27,8 @@ namespace Synergon::Rhi {
 
         EXPECT_ANY_THROW(auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor));
     }
+
+    INSTANTIATE_TEST_SUITE_P(
+    ApiChoice, ShaderInputLayoutTest,
+    ::testing::Values("Vulkan", "Directx12"));
 }

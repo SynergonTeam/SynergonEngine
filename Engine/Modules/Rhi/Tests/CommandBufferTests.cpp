@@ -1,10 +1,9 @@
-#include "Synergon/Rhi/Factory/DeviceFactory.hpp"
-
-#include <gtest/gtest.h>
+#include "TestClasses.hpp"
 
 namespace Synergon::Rhi {
-    TEST(Dx12CommandBuffer, DefaultConstruction) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(CommandBufferTest, DefaultConstruction) {
+        const std::string apiName = GetParam();
+        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         constexpr CommandAllocatorDescriptor descriptor{};
 
@@ -14,4 +13,8 @@ namespace Synergon::Rhi {
 
         ASSERT_NO_THROW(std::unique_ptr<ICommandBuffer> commandBuffer = allocator->allocateCommandBuffer(commandBufferDescriptor));
     }
+
+    INSTANTIATE_TEST_SUITE_P(
+    ApiChoice, CommandBufferTest,
+    ::testing::Values("Vulkan", "Directx12"));
 }

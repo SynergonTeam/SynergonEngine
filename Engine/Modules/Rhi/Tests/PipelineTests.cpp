@@ -1,10 +1,10 @@
-#include "Synergon/Rhi/Factory/DeviceFactory.hpp"
+#include "TestClasses.hpp"
 
-#include <gtest/gtest.h>
 
 namespace Synergon::Rhi {
-    TEST(Dx12Pipeline, EmptyLayoutDefaultConstruction) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(PipelineTest, EmptyLayoutDefaultConstruction) {
+        const std::string apiName = GetParam();
+		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         std::vector<std::shared_ptr<IShaderInputLayout>> inputLayouts = {};
         std::vector<PushConstantRange> pushConstantRanges = {};
@@ -21,8 +21,9 @@ namespace Synergon::Rhi {
         EXPECT_NO_THROW(device->createRasterizerPipeline(rasterizerPipelineDescriptor));
     }
 
-    TEST(Dx12Pipeline, ComputeEmptyConstruction) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(PipelineTest, ComputeEmptyConstruction) {
+        const std::string apiName = GetParam();
+		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         PipelineLayoutDescriptor pipelineLayoutDescriptor;
         pipelineLayoutDescriptor.shaderInputLayouts = {};
@@ -38,8 +39,9 @@ namespace Synergon::Rhi {
         EXPECT_NO_THROW(device->createComputePipeline(computePipelineDescriptor));
     }
 
-    TEST(Dx12Pipeline, RasterizerNullLayout) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(PipelineTest, RasterizerNullLayout) {
+        const std::string apiName = GetParam();
+		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         RasterizerPipelineDescriptor rasterizerPipelineDescriptor;
         rasterizerPipelineDescriptor.layout = nullptr; // intentionally null
@@ -55,8 +57,9 @@ namespace Synergon::Rhi {
         EXPECT_ANY_THROW(device->createRasterizerPipeline(rasterizerPipelineDescriptor));
     }
 
-    TEST(Dx12Pipeline, ComputeNullLayout) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(PipelineTest, ComputeNullLayout) {
+        const std::string apiName = GetParam();
+		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         ComputePipelineDescriptor computePipelineDescriptor;
         computePipelineDescriptor.layout = nullptr;
@@ -66,8 +69,9 @@ namespace Synergon::Rhi {
         EXPECT_ANY_THROW(device->createComputePipeline(computePipelineDescriptor));
     }
 
-    TEST(Dx12Pipeline, RasterizerWithVertexInputAndDepthStencil) {
-        const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(ApiChoice::eDirectx12);
+    TEST_P(PipelineTest, RasterizerWithVertexInputAndDepthStencil) {
+        const std::string apiName = GetParam();
+		const std::unique_ptr<IDevice> device = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
         // Create pipeline layout.
         PipelineLayoutDescriptor pipelineLayoutDescriptor;
@@ -115,4 +119,8 @@ namespace Synergon::Rhi {
 
         EXPECT_NO_THROW(device->createRasterizerPipeline(rasterizerPipelineDescriptor));
     }
+
+    INSTANTIATE_TEST_SUITE_P(
+    ApiChoice, PipelineTest,
+    ::testing::Values("Vulkan", "Directx12"));
 }
