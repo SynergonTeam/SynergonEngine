@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ASSERTER_HPP
+#define ASSERTER_HPP
 
 namespace Synergon::Core
 {
@@ -7,3 +8,5 @@ namespace Synergon::Core
 
 	};
 }
+
+#endif
