@@ -49,7 +49,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented");
 	}
 
-	std::unique_ptr<IFence> Dx12Device::createFence(const FenceDescriptor& descriptor) {
+	std::unique_ptr<IShader> Dx12Device::createShader(const ShaderDescriptor& descriptor) {
 		throw std::logic_error("Not implemented");
 	}
 
@@ -58,6 +58,10 @@ namespace Synergon::Rhi {
 	}
 
 	std::shared_ptr<IShaderInputContainer> Dx12Device::createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor) {
+		throw std::logic_error("Not implemented");
+	}
+
+	std::unique_ptr<IFence> Dx12Device::createFence(const FenceDescriptor& descriptor) {
 		throw std::logic_error("Not implemented");
 	}
 

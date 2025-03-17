@@ -1,5 +1,5 @@
-#ifndef SYNERGON_RHI_DX12COMMAND_HPP
-#define SYNERGON_RHI_DX12COMMAND_HPP
+#ifndef SYNERGON_RHI_DX12COMMANDBUFFER_HPP
+#define SYNERGON_RHI_DX12COMMANDBUFFER_HPP
 
 #include "Synergon/Rhi/ICommandBuffer.hpp"
 
@@ -8,4 +8,4 @@ namespace Synergon::Rhi {
 	};
 }  // namespace Synergon::Rhi
 
-#endif  // #ifndef SYNERGON_RHI_DX12COMMAND_HPP
+#endif  // #ifndef SYNERGON_RHI_DX12COMMANDBUFFER_HPP
