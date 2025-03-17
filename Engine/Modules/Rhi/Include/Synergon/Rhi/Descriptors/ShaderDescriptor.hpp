@@ -11,4 +11,4 @@ namespace Synergon::Rhi {
 	};
 }  // namespace Synergon::Rhi
 
-#endif  // #ifndef SYNERGON_RHI_ISHADER_HPP
+#endif  // SYNERGON_RHI_SHADERDESCRIPTOR_HPP
