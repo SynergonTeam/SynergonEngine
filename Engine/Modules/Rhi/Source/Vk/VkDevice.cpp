@@ -49,7 +49,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented");
 	}
 
-	std::unique_ptr<IShader> VkDevice::createShader(const ShaderDescriptor& descriptor) {
+	std::shared_ptr<IShader> VkDevice::createShader(const ShaderDescriptor& descriptor) {
 		throw std::logic_error("Not implemented");
 	}
 

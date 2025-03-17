@@ -24,7 +24,7 @@ namespace Synergon::Rhi {
 		std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) override;
 		std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor& descriptor) override;
 
-		std::unique_ptr<IShader> createShader(const ShaderDescriptor& descriptor) override;
+		std::shared_ptr<IShader> createShader(const ShaderDescriptor& descriptor) override;
 
 		std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderInputLayoutDescriptor& descriptor) override;
 		std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor) override;

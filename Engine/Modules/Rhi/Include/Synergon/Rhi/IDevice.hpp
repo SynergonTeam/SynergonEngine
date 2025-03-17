@@ -52,7 +52,7 @@ namespace Synergon::Rhi {
 		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderInputLayoutDescriptor& descriptor)       = 0;
 		virtual std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor) = 0;
 
-		virtual std::unique_ptr<IShader> createShader(const ShaderDescriptor& descriptor) = 0;
+		virtual std::shared_ptr<IShader> createShader(const ShaderDescriptor& descriptor) = 0;
 
 		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor)         = 0;
 		virtual std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) = 0;
