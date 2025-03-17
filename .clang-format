@@ -14,3 +14,4 @@ AlignConsecutiveDeclarations: true
 AlignTrailingComments: true
 IndentPPDirectives: AfterHash
 UseTab: ForIndentation
+SeparateDefinitionBlocks: Always
