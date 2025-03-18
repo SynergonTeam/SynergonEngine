@@ -9,7 +9,8 @@ namespace Synergon::Rhi {
 	};
 
 	struct ShaderInputLayoutDescriptor {
-		std::span<ShaderInputLayoutEntry> entries;
+		std::span<ShaderInputLayoutEntry> resourceEntries;
+		std::span<uint32_t>               samplerBindings;
 	};
 }  // namespace Synergon::Rhi
 

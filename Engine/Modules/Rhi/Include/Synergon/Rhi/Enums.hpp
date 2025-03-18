@@ -142,7 +142,6 @@ namespace Synergon::Rhi {
 
 	struct ShaderInputType {
 		enum Type {
-			eSampler       = 1 << 0,
 			eSampledImage  = 1 << 1,
 			eStorageImage  = 1 << 2,
 			eUniformBuffer = 1 << 3,
