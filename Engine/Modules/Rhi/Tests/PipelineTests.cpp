@@ -1,7 +1,8 @@
 #include "TestClasses.hpp"
+#include "Synergon/Core/FileHelpers.hpp"
 
 namespace Synergon::Rhi {
-	TEST_P(PipelineTest, ComputeEmptyConstruction) {
+	TEST_P(PipelineTest, DefaultConstruction) {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
@@ -11,21 +12,35 @@ namespace Synergon::Rhi {
 
 		const std::shared_ptr<IPipelineLayout> layout = device->createPipelineLayout(pipelineLayoutDescriptor);
 
-		ShaderDescriptor shaderDescriptor{};
-		shaderDescriptor.data = nullptr;
-		shaderDescriptor.size = 0;
+		std::vector<char> shaderBuffer;
+		shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
-		const std::shared_ptr<IShader> shader = device->createShader(shaderDescriptor);
+		ShaderDescriptor vertexShaderDescriptor{};
+		vertexShaderDescriptor.type = ShaderCompileType::eRuntime;
+		vertexShaderDescriptor.data = shaderBuffer.data();
 
-		ShaderModule shaderModule;
-		shaderModule.shader     = shader;
-		shaderModule.entryPoint = "main";
+		const std::shared_ptr<IShader> vertexShader = device->createShader(vertexShaderDescriptor);
 
-		ComputePipelineDescriptor computePipelineDescriptor{};
-		computePipelineDescriptor.layout       = layout;
-		computePipelineDescriptor.shaderModule = shaderModule;
+		ShaderModule vertexShaderModule{};
+		vertexShaderModule.shader     = vertexShader;
+		vertexShaderModule.entryPoint = "vsmain";
 
-		EXPECT_NO_THROW(device->createComputePipeline(computePipelineDescriptor));
+		ShaderDescriptor fragmentShaderDescriptor{};
+		fragmentShaderDescriptor.type = ShaderCompileType::eRuntime;
+		fragmentShaderDescriptor.data = shaderBuffer.data();
+
+		const std::shared_ptr<IShader> fragmentShader = device->createShader(vertexShaderDescriptor);
+
+		ShaderModule fragmentShaderModule;
+		fragmentShaderModule.shader     = fragmentShader;
+		fragmentShaderModule.entryPoint = "fsmain";
+
+		RasterizerPipelineDescriptor rasterizerPipelineDescriptor{};
+		rasterizerPipelineDescriptor.layout               = layout;
+		rasterizerPipelineDescriptor.vertexShaderModule   = vertexShaderModule;
+		rasterizerPipelineDescriptor.fragmentShaderModule = fragmentShaderModule;
+
+		EXPECT_NO_THROW(device->createRasterizerPipeline(rasterizerPipelineDescriptor));
 	}
 
 	INSTANTIATE_TEST_SUITE_P(

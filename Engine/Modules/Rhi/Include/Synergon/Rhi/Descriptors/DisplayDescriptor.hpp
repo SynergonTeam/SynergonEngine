@@ -14,11 +14,6 @@ namespace Synergon::Rhi {
 		TextureFormat      format;
 		TextureUsage::Type usage;
 
-		/* // We can get the window width and height from the window handle
-		uint32_t width;
-		uint32_t height;
-		*/
-
 		PresentMode        presentMode        = PresentMode::eFifo;
 		CompositeAlphaMode compositeAlphaMode = CompositeAlphaMode::eOpaque;
 	};

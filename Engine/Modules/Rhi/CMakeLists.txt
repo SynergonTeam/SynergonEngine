@@ -27,6 +27,8 @@ target_include_directories(SynergonRhi PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
+target_link_libraries(SynergonRhi PUBLIC SynergonCore)
+
 set_property(TARGET SynergonRhi PROPERTY FOLDER "Engine/Modules/Rhi")
 
 add_subdirectory(Tests)

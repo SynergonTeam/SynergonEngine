@@ -1,5 +1,5 @@
-#ifndef ASSERTER_HPP
-#define ASSERTER_HPP
+#ifndef SYNERGON_CORE_ASSERTER_HPP
+#define SYNERGON_CORE_ASSERTER_HPP
 
 namespace Synergon::Core {
 	class Asserter {
