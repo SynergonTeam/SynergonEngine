@@ -5,10 +5,8 @@ namespace Synergon::Rhi {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
-
 		std::vector<ShaderResourceInputLayoutEntry> inputEntry{
-			    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderResourceInputType::eStorageBuffer }
-		};
+		    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderResourceInputType::eStorageBuffer}};
 
 		ShaderResourceInputLayoutDescriptor inputLayoutDescriptor;
 		inputLayoutDescriptor.resourceEntries = inputEntry;
