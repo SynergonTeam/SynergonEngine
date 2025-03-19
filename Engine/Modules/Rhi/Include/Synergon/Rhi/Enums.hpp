@@ -1,6 +1,8 @@
 #ifndef SYNERGON_RHI_ENUMS_HPP
 #define SYNERGON_RHI_ENUMS_HPP
 
+#include <cstdint>
+
 namespace Synergon::Rhi {
 	enum class MemoryUsage {
 		eGpu      = 0,
@@ -10,7 +12,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct BufferUsage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eVertex      = 1 << 0,
 			eIndex       = 1 << 1,
 			eUniform     = 1 << 2,
@@ -22,7 +26,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct TextureUsage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eSampled                = 1 << 0,
 			eColorAttachment        = 1 << 1,
 			eDepthStencilAttachment = 1 << 5,
@@ -40,7 +46,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct TextureAspect {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eUndefined    = 0,
 			eColor        = 1 << 0,
 			eDepth        = 1 << 2,
@@ -133,20 +141,25 @@ namespace Synergon::Rhi {
 	};
 
 	struct ShaderStage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eVertex   = 1 << 0,
 			eFragment = 1 << 1,
 			eCompute  = 1 << 2,
 		};
 	};
 
-	struct ShaderInputType {
-		enum Type {
-			eSampledImage  = 1 << 1,
-			eStorageImage  = 1 << 2,
-			eUniformBuffer = 1 << 3,
-			eStorageBuffer = 1 << 4,
-		};
+	enum class ShaderResourceInputType {
+		eSampledImage  = 0,
+		eStorageImage  = 1,
+		eUniformBuffer = 2,
+		eStorageBuffer = 3,
+	};
+
+	enum class ShaderInputType {
+		eResource = 0,
+		eSampler  = 1,
 	};
 
 	enum class CompositeAlphaMode {
