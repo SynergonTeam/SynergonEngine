@@ -48,6 +48,8 @@ namespace Synergon::Rhi {
 
 	class ShaderTest : public ::testing::TestWithParam<std::string> {};
 
+	class ShaderInputPoolTest : public ::testing::TestWithParam<std::string> {};
+
 	class RenderTest : public ::testing::TestWithParam<std::string> {};
 }  // namespace Synergon::Rhi
 

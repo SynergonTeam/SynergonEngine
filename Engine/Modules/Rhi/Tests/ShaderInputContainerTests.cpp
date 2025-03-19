@@ -5,16 +5,31 @@ namespace Synergon::Rhi {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
-		std::vector<ShaderInputLayoutEntry> inputEntry{
-		    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderInputType::eStorageBuffer}};
 
-		ShaderInputLayoutDescriptor inputLayoutDescriptor;
-		inputLayoutDescriptor.entries = inputEntry;
+		std::shared_ptr<IShaderInputLayout> inputLayout;
+		{
+			std::vector<ShaderResourceInputLayoutEntry> inputEntry{
+			    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderResourceInputType::eStorageBuffer }
+			};
 
-		const auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor);
+			ShaderResourceInputLayoutDescriptor inputLayoutDescriptor;
+			inputLayoutDescriptor.resourceEntries = inputEntry;
+
+			inputLayout = device->createShaderInputLayout(inputLayoutDescriptor);
+		}
+
+		std::shared_ptr<IShaderInputPool> pool;
+		{
+			ShaderInputPoolDescriptor shaderInputPoolDesc{};
+			shaderInputPoolDesc.type = ShaderInputType::eResource;
+			shaderInputPoolDesc.count = 100;
+
+			pool = device->createShaderInputPool(shaderInputPoolDesc);
+		}
 
 		ShaderInputContainerDescriptor inputContainerDescriptor;
 		inputContainerDescriptor.layout = inputLayout;
+		inputContainerDescriptor.pool = pool;
 
 		ASSERT_NO_THROW(auto shaderInputContainer = device->createShaderInputContainer(inputContainerDescriptor));
 	}

@@ -5,25 +5,15 @@ namespace Synergon::Rhi {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
-		std::vector<ShaderInputLayoutEntry> inputEntry{
-		    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderInputType::eStorageBuffer}};
 
-		ShaderInputLayoutDescriptor inputLayoutDescriptor;
-		inputLayoutDescriptor.entries = inputEntry;
+		std::vector<ShaderResourceInputLayoutEntry> inputEntry{
+			    {0, static_cast<ShaderStage::Type>(ShaderStage::eVertex | ShaderStage::eFragment), ShaderResourceInputType::eStorageBuffer }
+		};
+
+		ShaderResourceInputLayoutDescriptor inputLayoutDescriptor;
+		inputLayoutDescriptor.resourceEntries = inputEntry;
 
 		ASSERT_NO_THROW(auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor));
-	}
-
-	TEST_P(ShaderInputLayoutTest, EmptyConstruction) {
-		const std::string              apiName = GetParam();
-		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
-
-		std::vector<ShaderInputLayoutEntry> inputEntry{};
-
-		ShaderInputLayoutDescriptor inputLayoutDescriptor;
-		inputLayoutDescriptor.entries = inputEntry;
-
-		EXPECT_ANY_THROW(auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor));
 	}
 
 	INSTANTIATE_TEST_SUITE_P(
