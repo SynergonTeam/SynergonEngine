@@ -3,8 +3,6 @@
 
 #include "Synergon/Rhi/Enums.hpp"
 
-#include <cstdint>
-
 namespace Synergon::Rhi {
 	typedef void* WindowHandle;
 

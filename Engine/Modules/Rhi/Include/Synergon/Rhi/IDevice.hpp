@@ -66,6 +66,8 @@ namespace Synergon::Rhi {
 		virtual std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) = 0;
 
 		virtual std::unique_ptr<IFence> createFence(const FenceDescriptor& descriptor) = 0;
+
+		virtual std::string loadShaderFromPath(std::string_view path) = 0;
 	};
 }  // namespace Synergon::Rhi
 

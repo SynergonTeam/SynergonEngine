@@ -6,14 +6,19 @@
 
 namespace Synergon::Rhi {
 
-	enum class ShaderCompileType {
-		eRuntime,
-		eCompileTime,
+	enum class ShaderCodeType {
+		eShaderSlang,
+		eNativeByteCode,
 	};
 
 	struct ShaderDescriptor {
-		ShaderCompileType type = ShaderCompileType::eRuntime;
-		// if it is runtime ShaderDescriptor this is Slang shader content, if it is a CompileTime ShaderDescriptor this is the path to the shader without the file extension
+		ShaderCodeType type = ShaderCodeType::eShaderSlang;
+		/*
+			If it is ShaderCodeType::eShaderSlang, data will take any valid slang shader and
+			compile it to the native byte code on the runtime and saves it to a cache
+			or something like that. If it is a ShaderCodeType::eNativeByteCode, data must be
+			a valid native byte code blob. (spirv for vulkan, dxil for dx12)
+		 */
 		std::string_view data;
 	};
 }  // namespace Synergon::Rhi
