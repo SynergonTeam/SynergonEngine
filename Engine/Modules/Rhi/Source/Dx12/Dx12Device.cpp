@@ -77,4 +77,9 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
+	std::string Dx12Device::loadShaderByteCodeFromPath(std::string_view path) {
+		throw std::logic_error("Not implemented yet");
+		return std::string();
+	}
+
 }  // namespace Synergon::Rhi

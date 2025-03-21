@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DX12PIPELINE_HPP
-#define SYNERGON_RHI_DX12PIPELINE_HPP
+#pragma once
 
 #include "Synergon/Rhi/IPipeline.hpp"
 
@@ -10,5 +9,3 @@ namespace Synergon::Rhi {
 	};
 
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_DX12PIPELINE_HPP

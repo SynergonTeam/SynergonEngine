@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_TESTS_TESTCLASSES_HPP
-#define SYNERGON_RHI_TESTS_TESTCLASSES_HPP
+#pragma once
 
 #include "Synergon/Rhi/Factory/DeviceFactory.hpp"
 
@@ -52,5 +51,3 @@ namespace Synergon::Rhi {
 
 	class RenderTest : public ::testing::TestWithParam<std::string> {};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_TESTS_TESTCLASSES_HPP

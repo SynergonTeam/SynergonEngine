@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_SHADERINPUTLAYOUTDESCRIPTOR_HPP
-#define SYNERGON_RHI_SHADERINPUTLAYOUTDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -18,5 +17,3 @@ namespace Synergon::Rhi {
 		std::span<uint32_t> samplerBindings;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_SHADERINPUTLAYOUTDESCRIPTOR_HPP

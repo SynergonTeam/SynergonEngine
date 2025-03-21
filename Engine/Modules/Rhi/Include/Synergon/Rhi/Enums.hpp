@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ENUMS_HPP
-#define SYNERGON_RHI_ENUMS_HPP
+#pragma once
 
 #include <cstdint>
 
@@ -340,5 +339,3 @@ namespace Synergon::Rhi {
 		eDontClear = 2,
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ENUMS_HPP

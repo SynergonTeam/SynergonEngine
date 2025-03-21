@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IPIPELINE_HPP
-#define SYNERGON_RHI_IPIPELINE_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IPipeline {
@@ -8,5 +7,3 @@ namespace Synergon::Rhi {
 	};
 
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_IPIPELINE_HPP

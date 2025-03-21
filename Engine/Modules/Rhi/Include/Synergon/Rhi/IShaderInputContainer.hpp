@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP
-#define SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP
+#pragma once
 
 #include "Synergon/Rhi/IBufferView.hpp"
 #include "Synergon/Rhi/ISampler.hpp"
@@ -50,5 +49,3 @@ namespace Synergon::Rhi {
 		virtual std::shared_ptr<IShaderInputPool>   getPool() const   = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ISHADERINPUTCONTAINER_HPP

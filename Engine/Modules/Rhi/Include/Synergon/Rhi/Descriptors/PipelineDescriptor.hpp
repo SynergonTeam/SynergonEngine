@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
-#define SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 #include "Synergon/Rhi/IShader.hpp"
@@ -99,5 +98,3 @@ namespace Synergon::Rhi {
 		ShaderModule                     shaderModule;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP

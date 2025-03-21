@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IDEVICE_HPP
-#define SYNERGON_RHI_IDEVICE_HPP
+#pragma once
 
 #include "Synergon/Rhi/Descriptors/BufferDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/BufferViewDescriptor.hpp"
@@ -72,5 +71,3 @@ namespace Synergon::Rhi {
 		virtual std::string loadShaderByteCodeFromPath(std::string_view path) = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_IDEVICE_HPP

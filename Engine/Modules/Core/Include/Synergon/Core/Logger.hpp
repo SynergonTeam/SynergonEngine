@@ -1,5 +1,4 @@
-#ifndef SYNERGON_CORE_LOGGER_HPP
-#define SYNERGON_CORE_LOGGER_HPP
+#pragma once
 
 #include <string>
 
@@ -13,5 +12,3 @@ namespace Synergon::Core {
 	};
 
 }  // namespace Synergon::Core
-
-#endif

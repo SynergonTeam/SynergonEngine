@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_COMMANDALLOCATORDESCRIPTOR_HPP
-#define SYNERGON_RHI_COMMANDALLOCATORDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -8,5 +7,3 @@ namespace Synergon::Rhi {
 		CommandType commandBufferType;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_COMMANDALLOCATORDESCRIPTOR_HPP

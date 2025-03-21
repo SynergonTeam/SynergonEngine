@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DEVICEFACTORY_HPP
-#define SYNERGON_RHI_DEVICEFACTORY_HPP
+#pragma once
 
 #include "Synergon/Rhi/IDevice.hpp"
 
@@ -24,5 +23,3 @@ namespace Synergon::Rhi {
 	};
 
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_DEVICEFACTORY_HPP

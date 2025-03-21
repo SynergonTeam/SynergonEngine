@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_VKCOMMANDALLOCATOR_HPP
-#define SYNERGON_RHI_VKCOMMANDALLOCATOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/ICommandAllocator.hpp"
 
@@ -11,5 +10,3 @@ namespace Synergon::Rhi {
 		std::unique_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor &descriptor) override;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_VKCOMMANDALLOCATOR_HPP

@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IDISPLAY_HPP
-#define SYNERGON_RHI_IDISPLAY_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 #include "Synergon/Rhi/ICommandQueue.hpp"
@@ -31,5 +30,3 @@ namespace Synergon::Rhi {
 		virtual CompositeAlphaMode getCompositeAlphaMode() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_IDISPLAY_HPP

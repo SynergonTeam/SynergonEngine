@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_SHADERINPUTCONTAINERDESCRIPTOR_HPP
-#define SYNERGON_RHI_SHADERINPUTCONTAINERDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/IShaderInputLayout.hpp"
 #include "Synergon/Rhi/IShaderInputPool.hpp"
@@ -12,5 +11,3 @@ namespace Synergon::Rhi {
 		std::shared_ptr<IShaderInputPool>   pool;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_SHADERINPUTCONTAINERDESCRIPTOR_HPP

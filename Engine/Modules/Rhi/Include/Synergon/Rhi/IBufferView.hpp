@@ -1,5 +1,4 @@
-#ifndef SYNERGON_ENGINE_IBUFFERVIEW_HPP
-#define SYNERGON_ENGINE_IBUFFERVIEW_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IBufferView {
@@ -14,5 +13,3 @@ namespace Synergon::Rhi {
 		virtual uint64_t          getSize() const   = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_ENGINE_IBUFFERVIEW_HPP

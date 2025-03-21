@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_RENDERINGDESCRIPTOR_HPP
-#define SYNERGON_RHI_RENDERINGDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 #include "Synergon/Rhi/ITextureView.hpp"
@@ -32,5 +31,3 @@ namespace Synergon::Rhi {
 	};
 
 }  //  namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_RENDERINGDESCRIPTOR_HPP

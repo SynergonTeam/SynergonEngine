@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ICOMMAND_HPP
-#define SYNERGON_RHI_ICOMMAND_HPP
+#pragma once
 
 #include "Synergon/Rhi/IBuffer.hpp"
 #include "Synergon/Rhi/IPipeline.hpp"
@@ -51,5 +50,3 @@ namespace Synergon::Rhi {
 		virtual void setVertexBuffers(std::span<std::shared_ptr<IBuffer>> buffers) const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_ICOMMAND_HPP

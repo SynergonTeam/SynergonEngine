@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IPIPELINELAYOUT_HPP
-#define SYNERGON_RHI_IPIPELINELAYOUT_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IPipelineLayout {
@@ -7,5 +6,3 @@ namespace Synergon::Rhi {
 		virtual ~IPipelineLayout() = default;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_IPIPELINELAYOUT_HPP

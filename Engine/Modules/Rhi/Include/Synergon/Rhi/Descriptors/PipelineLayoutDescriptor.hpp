@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_PIPELINELAYOUTDESCRIPTOR_HPP
-#define SYNERGON_RHI_PIPELINELAYOUTDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 #include "Synergon/Rhi/IShaderInputLayout.hpp"
@@ -18,5 +17,3 @@ namespace Synergon::Rhi {
 		std::span<PushConstantRange>                   pushConstantRanges;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_PIPELINELAYOUTDESCRIPTOR_HPP

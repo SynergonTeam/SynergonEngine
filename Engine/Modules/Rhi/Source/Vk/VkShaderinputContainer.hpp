@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_VKSHADERINPUTCONTAINER_HPP
-#define SYNERGON_RHI_VKSHADERINPUTCONTAINER_HPP
+#pragma once
 
 #include "Synergon/Rhi/IShaderInputContainer.hpp"
 
@@ -10,5 +9,3 @@ namespace Synergon::Rhi {
 	};
 
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_VKSHADERINPUTCONTAINER_HPP

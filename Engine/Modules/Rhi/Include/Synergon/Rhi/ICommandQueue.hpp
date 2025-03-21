@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ICOMMANDQUEUE_HPP
-#define SYNERGON_RHI_ICOMMANDQUEUE_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 #include "Synergon/Rhi/ICommandBuffer.hpp"
@@ -17,5 +16,3 @@ namespace Synergon::Rhi {
 		virtual CommandType getCommandType() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ICOMMANDQUEUE_HPP
