@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_VKFENCE_HPP
-#define SYNERGON_RHI_VKFENCE_HPP
+#pragma once
 
 #include "Synergon/Rhi/IFence.hpp"
 
@@ -9,5 +8,3 @@ namespace Synergon::Rhi {
 	   private:
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_VKFENCE_HPP

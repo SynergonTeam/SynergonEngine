@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP
-#define SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -24,5 +23,3 @@ namespace Synergon::Rhi {
 		TextureDimension    dimension = TextureDimension::e2D;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP

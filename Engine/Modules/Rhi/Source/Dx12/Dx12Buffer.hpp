@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DX12BUFFER_HPP
-#define SYNERGON_RHI_DX12BUFFER_HPP
+#pragma once
 
 #include "Synergon/Rhi/IBuffer.hpp"
 
@@ -9,5 +8,3 @@ namespace Synergon::Rhi {
 	   private:
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_DX12BUFFER_HPP

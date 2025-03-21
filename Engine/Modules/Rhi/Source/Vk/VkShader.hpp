@@ -1,7 +1,6 @@
 #pragma once
 
 namespace Synergon::Rhi {
-	struct FenceDescriptor {
-		bool signaled = false;
+	class VkShader {
 	};
 }  // namespace Synergon::Rhi

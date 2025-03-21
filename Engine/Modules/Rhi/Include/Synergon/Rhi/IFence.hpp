@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IFENCE_HPP
-#define SYNERGON_RHI_IFENCE_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IFence {
@@ -7,5 +6,3 @@ namespace Synergon::Rhi {
 		virtual ~IFence() = default;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_IFENCE_HPP

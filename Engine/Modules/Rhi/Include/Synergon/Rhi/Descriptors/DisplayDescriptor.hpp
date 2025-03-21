@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP
-#define SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP
+#pragma	once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -18,5 +17,3 @@ namespace Synergon::Rhi {
 		CompositeAlphaMode compositeAlphaMode = CompositeAlphaMode::eOpaque;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP

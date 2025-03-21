@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DX12DEVICE_HPP
-#define SYNERGON_RHI_DX12DEVICE_HPP
+#pragma once
 
 #include "Synergon/Rhi/IDevice.hpp"
 
@@ -32,6 +31,8 @@ namespace Synergon::Rhi {
 
 		std::string                            loadShaderByteCodeFromPath(std::string_view path) override;
 
+		std::string loadShaderByteCodeFromPath(std::string_view path) override;
+
 	   private:
 	};
 
@@ -40,5 +41,3 @@ namespace Synergon::Rhi {
 	}
 
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_DX12DEVICE_HPP

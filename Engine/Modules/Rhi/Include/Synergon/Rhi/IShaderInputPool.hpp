@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ISHADERINPUTPOOL_HPP
-#define SYNERGON_RHI_ISHADERINPUTPOOL_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -12,5 +11,3 @@ namespace Synergon::Rhi {
 		virtual uint32_t        getCount() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ISHADERINPUTPOOL_HPP

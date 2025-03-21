@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ISHADER_HPP
-#define SYNERGON_RHI_ISHADER_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IShader {
@@ -7,5 +6,3 @@ namespace Synergon::Rhi {
 		virtual ~IShader() = default;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ISHADER_HPP

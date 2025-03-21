@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_SAMPLERDESCRIPTOR_HPP
-#define SYNERGON_RHI_SAMPLERDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -20,5 +19,3 @@ namespace Synergon::Rhi {
 		uint16_t maxAnisotropy = 1u;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_SAMPLERDESCRIPTOR_HPP

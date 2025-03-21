@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ICOMMANDALLOCATOR_HPP
-#define SYNERGON_RHI_ICOMMANDALLOCATOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/ICommandBuffer.hpp"
 #include "Synergon/Rhi/Descriptors/CommandBufferDescriptor.hpp"
@@ -18,5 +17,3 @@ namespace Synergon::Rhi {
 		virtual CommandType getCommandType() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_ICOMMANDALLOCATOR_HPP

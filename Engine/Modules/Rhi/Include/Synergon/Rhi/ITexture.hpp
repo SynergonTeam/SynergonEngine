@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ITEXTURE_HPP
-#define SYNERGON_RHI_ITEXTURE_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -23,5 +22,3 @@ namespace Synergon::Rhi {
 		virtual TextureDimension getDimension() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_ITEXTURE_HPP

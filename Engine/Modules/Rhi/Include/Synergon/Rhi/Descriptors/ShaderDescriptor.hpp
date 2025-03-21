@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_SHADERDESCRIPTOR_HPP
-#define SYNERGON_RHI_SHADERDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -17,5 +16,3 @@ namespace Synergon::Rhi {
 		std::string_view data;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_SHADERDESCRIPTOR_HPP

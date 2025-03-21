@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_IBUFFER_HPP
-#define SYNERGON_RHI_IBUFFER_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -21,5 +20,3 @@ namespace Synergon::Rhi {
 		virtual uint64_t          getSize() const        = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_IBUFFER_HPP
