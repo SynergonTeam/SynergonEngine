@@ -3,11 +3,6 @@
 #include <stdexcept>
 
 namespace Synergon::Rhi {
-	Dx12Device::Dx12Device() {
-	}
-
-	Dx12Device::~Dx12Device() {
-	}
 
 	std::unique_ptr<IDisplay> Dx12Device::createDisplay(const DisplayDescriptor &descriptor) {
 		throw std::logic_error("Not implemented yet");
@@ -77,4 +72,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
+	std::string Dx12Device::loadShaderByteCodeFromPath(std::string_view path) {
+		throw std::logic_error("Not implemented yet");
+	}
 }  // namespace Synergon::Rhi

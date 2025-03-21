@@ -6,10 +6,7 @@
 namespace Synergon::Rhi {
 	class VkDevice final : public IDevice {
 	   public:
-		VkDevice();
-		~VkDevice() override;
 		std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor &descriptor) override;
-
 		std::shared_ptr<IBuffer>  createBuffer(const BufferDescriptor &descriptor) override;
 		std::shared_ptr<ITexture> createTexture(const TextureDescriptor &descriptor) override;
 		std::shared_ptr<ISampler> createSampler(const SamplerDescriptor &descriptor) override;
@@ -30,8 +27,9 @@ namespace Synergon::Rhi {
 		std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor &descriptor) override;
 		std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor &descriptor) override;
 		std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) override;
+		std::unique_ptr<IFence>          createFence(const FenceDescriptor &descriptor) override;
 
-		std::unique_ptr<IFence> createFence(const FenceDescriptor &descriptor) override;
+		std::string loadShaderByteCodeFromPath(std::string_view path) override;
 
 	   private:
 	};
