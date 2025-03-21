@@ -12,8 +12,6 @@ namespace Synergon::Rhi {
 		TextureFormat      format;
 		TextureUsage::Type usage;
 
-		uint32_t textureCount = 2u;
-
 		PresentMode        presentMode        = PresentMode::eFifo;
 		CompositeAlphaMode compositeAlphaMode = CompositeAlphaMode::eOpaque;
 	};

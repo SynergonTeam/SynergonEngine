@@ -151,15 +151,17 @@ namespace Synergon::Rhi {
 	};
 
 	enum class ShaderResourceInputType {
-		eSampledImage  = 0,
-		eStorageImage  = 1,
-		eUniformBuffer = 2,
-		eStorageBuffer = 3,
+		eSampledTexture = 0,
+		eStorageTexture = 1,
+		eUniformBuffer  = 2,
+		eStorageBuffer  = 3,
 	};
 
 	enum class ShaderInputType {
-		eResource = 0,
-		eSampler  = 1,
+		eResource               = 0,
+		eSampler                = 1,
+		eColorAttachment        = 2,
+		eDepthStencilAttachment = 3,
 	};
 
 	enum class CompositeAlphaMode {
@@ -306,6 +308,36 @@ namespace Synergon::Rhi {
 		Compute  = 1,
 		Copy     = 2,
 		Bundle   = 3,
+	};
+
+	enum class ShaderCodeType {
+		eShaderSlang    = 0,
+		eNativeByteCode = 1,
+	};
+
+	enum class BufferMapType {
+		eRead      = 0,
+		eWrite     = 1,
+		eReadWrite = 2,
+	};
+
+	enum class BufferMapState {
+		eUnmapped        = 0,
+		eMappedRead      = 1,
+		eMappedWrite     = 2,
+		eMappedReadWrite = 3,
+	};
+
+	enum class LoadOp {
+		eLoad     = 0,
+		eClear    = 1,
+		eDontCare = 2,
+	};
+
+	enum class StoreOp {
+		eStore     = 0,
+		eDontCare  = 1,
+		eDontClear = 2,
 	};
 }  // namespace Synergon::Rhi
 

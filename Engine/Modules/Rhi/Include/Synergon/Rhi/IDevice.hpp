@@ -10,6 +10,7 @@
 #include "Synergon/Rhi/Descriptors/FenceDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/PipelineDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/PipelineLayoutDescriptor.hpp"
+#include "Synergon/Rhi/Descriptors/RenderingDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/SamplerDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/ShaderDescriptor.hpp"
 #include "Synergon/Rhi/Descriptors/ShaderInputContainerDescriptor.hpp"
@@ -61,13 +62,14 @@ namespace Synergon::Rhi {
 		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor& descriptor)  = 0;
 		virtual std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor)   = 0;
 
-		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor)         = 0;
-		virtual std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor& descriptor)       = 0;
-		virtual std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) = 0;
+		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor) = 0;
+
+		virtual std::unique_ptr<IPipeline> createComputePipeline(const ComputePipelineDescriptor& descriptor)       = 0;
+		virtual std::unique_ptr<IPipeline> createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) = 0;
 
 		virtual std::unique_ptr<IFence> createFence(const FenceDescriptor& descriptor) = 0;
 
-		virtual std::string loadShaderFromPath(std::string_view path) = 0;
+		virtual std::string loadShaderByteCodeFromPath(std::string_view path) = 0;
 	};
 }  // namespace Synergon::Rhi
 

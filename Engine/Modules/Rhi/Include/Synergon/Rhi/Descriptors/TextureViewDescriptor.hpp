@@ -3,13 +3,14 @@
 
 #include "Synergon/Rhi/Enums.hpp"
 
-#include "Synergon/Rhi/IShaderInputPool.hpp"
+#include "Synergon/Rhi/ITexture.hpp"
 
 #include <memory>
+#include <cstdint>
 
 namespace Synergon::Rhi {
 	struct TextureViewDescriptor {
-		std::shared_ptr<IShaderInputPool> inputPool;
+		std::shared_ptr<ITexture> texture;
 
 		TextureFormat      format;
 		TextureUsage::Type usage;

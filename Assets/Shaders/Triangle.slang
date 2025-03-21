@@ -20,6 +20,11 @@ struct FragmentInput
     float3 Color : COLOR;
 };
 
+[[vk::binding(0, 0)]]
+Texture2D<float4> tex0;
+[[vk::binding(1, 0)]]
+Texture2D<float4> tex1;
+
 [shader("vertex")]
 VertexOutput vsmain(Vertex v)
 {

@@ -11,7 +11,6 @@
 #include <string>
 
 namespace Synergon::Rhi {
-
 	struct StencilFaceState {
 		CompareOp compareOp;
 		StencilOp failOp;
@@ -27,7 +26,7 @@ namespace Synergon::Rhi {
 
 	struct VertexAttribute {
 		VertexFormat format;
-		uint64_t     offset;
+		uint32_t     offset;
 		uint32_t     location;
 	};
 
@@ -99,7 +98,6 @@ namespace Synergon::Rhi {
 		std::shared_ptr<IPipelineLayout> layout;
 		ShaderModule                     shaderModule;
 	};
-
 }  // namespace Synergon::Rhi
 
 #endif  // #ifndef SYNERGON_RHI_PIPELINEDESCRIPTOR_HPP
