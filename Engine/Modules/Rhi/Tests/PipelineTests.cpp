@@ -16,7 +16,7 @@ namespace Synergon::Rhi {
 		shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
 		ShaderDescriptor vertexShaderDescriptor{};
-		vertexShaderDescriptor.type = ShaderCompileType::eRuntime;
+		vertexShaderDescriptor.type = ShaderCodeType::eShaderSlang;
 		vertexShaderDescriptor.data = shaderBuffer.data();
 
 		const std::shared_ptr<IShader> vertexShader = device->createShader(vertexShaderDescriptor);
@@ -26,7 +26,7 @@ namespace Synergon::Rhi {
 		vertexShaderModule.entryPoint = "vsmain";
 
 		ShaderDescriptor fragmentShaderDescriptor{};
-		fragmentShaderDescriptor.type = ShaderCompileType::eRuntime;
+		fragmentShaderDescriptor.type = ShaderCodeType::eShaderSlang;
 		fragmentShaderDescriptor.data = shaderBuffer.data();
 
 		const std::shared_ptr<IShader> fragmentShader = device->createShader(vertexShaderDescriptor);
