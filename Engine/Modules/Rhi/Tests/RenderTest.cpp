@@ -25,8 +25,8 @@ namespace Synergon::Rhi {
 				ShaderResourceInputLayoutDescriptor shaderInputLayoutDescriptor;
 
 				std::vector<ShaderResourceInputLayoutEntry> resourceEntries = {
-				    {0, ShaderStage::eVertex, ShaderResourceInputType::eStorageBuffer},   // instance matrices
-				    {1, ShaderStage::eFragment, ShaderResourceInputType::eSampledImage},  // texture
+				    {0, ShaderStage::eVertex, ShaderResourceInputType::eStorageBuffer},     // instance matrices
+				    {1, ShaderStage::eFragment, ShaderResourceInputType::eSampledTexture},  // texture
 				};
 
 				shaderInputLayoutDescriptor.resourceEntries = resourceEntries;
@@ -65,11 +65,11 @@ namespace Synergon::Rhi {
 			shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
 			ShaderDescriptor vertexShaderDescriptor{};
-			vertexShaderDescriptor.type = ShaderCompileType::eRuntime;
+			vertexShaderDescriptor.type = ShaderCodeType::eShaderSlang;
 			vertexShaderDescriptor.data = shaderBuffer.data();
 
 			ShaderDescriptor fragmentShaderDescriptor{};
-			fragmentShaderDescriptor.type = ShaderCompileType::eRuntime;
+			fragmentShaderDescriptor.type = ShaderCodeType::eShaderSlang;
 			fragmentShaderDescriptor.data = shaderBuffer.data();
 
 			std::shared_ptr<IShader> vertexShader   = device->createShader(vertexShaderDescriptor);

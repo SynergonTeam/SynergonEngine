@@ -10,7 +10,7 @@ namespace Synergon::Rhi {
 		shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
 		ShaderDescriptor vertexShaderDescriptor{};
-		vertexShaderDescriptor.type = ShaderCompileType::eRuntime;
+		vertexShaderDescriptor.type = ShaderCodeType::eShaderSlang;
 		vertexShaderDescriptor.data = shaderBuffer.data();
 
 		EXPECT_NO_THROW(std::shared_ptr<IShader> vertexShader = device->createShader(vertexShaderDescriptor));

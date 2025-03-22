@@ -7,34 +7,38 @@ namespace Synergon::Rhi {
 	   public:
 		Dx12Device();
 		~Dx12Device() override;
-		std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor &descriptor) override;
 
-		std::shared_ptr<IBuffer>  createBuffer(const BufferDescriptor &descriptor) override;
-		std::shared_ptr<ITexture> createTexture(const TextureDescriptor &descriptor) override;
-		std::shared_ptr<ISampler> createSampler(const SamplerDescriptor &descriptor) override;
+		void waitIdle() const override;
+		void waitForFences(std::span<std::shared_ptr<IFence>> fences) const override;
 
-		std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor &descriptor) override;
-		std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor &descriptor) override;
+		std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor &descriptor) const override;
 
-		std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor &descriptor) override;
-		std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor &descriptor) override;
+		std::shared_ptr<IBuffer>  createBuffer(const BufferDescriptor &descriptor) const override;
+		std::shared_ptr<ITexture> createTexture(const TextureDescriptor &descriptor) const override;
+		std::shared_ptr<ISampler> createSampler(const SamplerDescriptor &descriptor) const override;
 
-		std::shared_ptr<IShader> createShader(const ShaderDescriptor &descriptor) override;
+		std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor &descriptor) const override;
+		std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor &descriptor) const override;
 
-		std::shared_ptr<IShaderInputPool>      createShaderInputPool(const ShaderInputPoolDescriptor &descriptor) override;
-		std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderResourceInputLayoutDescriptor &descriptor) override;
-		std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor &descriptor) override;
-		std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor &descriptor) override;
+		std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const override;
+		std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor &descriptor) const override;
 
-		std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor &descriptor) override;
-		std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor &descriptor) override;
-		std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) override;
+		std::shared_ptr<IShader> createShader(const ShaderDescriptor &descriptor) const override;
 
-		std::unique_ptr<IFence> createFence(const FenceDescriptor &descriptor) override;
+		std::shared_ptr<IShaderInputPool>      createShaderInputPool(const ShaderInputPoolDescriptor &descriptor) const override;
+		std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderResourceInputLayoutDescriptor &descriptor) const override;
+		std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor &descriptor) const override;
+		std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor &descriptor) const override;
 
-		std::string loadShaderByteCodeFromPath(std::string_view path) override;
+		std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor &descriptor) const override;
+		std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor &descriptor) const override;
+		std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const override;
 
-	   private:
+		std::unique_ptr<IFence> createFence(const FenceDescriptor &descriptor) const override;
+
+		std::string loadShaderByteCodeFromPath(std::string_view path) const override;
+
+	   public:
 	};
 
 	inline std::unique_ptr<IDevice> CreateDx12Device() {

@@ -36,14 +36,15 @@
 #include "Synergon/Rhi/ITextureView.hpp"
 
 #include <memory>
+#include <span>
 
 namespace Synergon::Rhi {
 	class IDevice {
 	   public:
 		virtual ~IDevice() = default;
 
-		virtual void waitIdle() const                                                     = 0;
-		virtual void waitForFences(std::span<const std::shared_ptr<IFence>> fences) const = 0;
+		virtual void waitIdle() const                                               = 0;
+		virtual void waitForFences(std::span<std::shared_ptr<IFence>> fences) const = 0;
 
 		virtual std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor& descriptor) const = 0;
 
