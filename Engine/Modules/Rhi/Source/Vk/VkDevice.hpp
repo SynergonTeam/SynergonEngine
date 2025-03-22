@@ -42,6 +42,7 @@ namespace Synergon::Rhi {
 	};
 
 	inline std::unique_ptr<IDevice> CreateVkDevice() {
+		// there
 		return std::make_unique<VkDevice>();
 	}
 
