@@ -1,4 +1,4 @@
-#pragma	once
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 

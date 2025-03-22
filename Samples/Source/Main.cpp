@@ -5,8 +5,6 @@ int main(int argc, char **argv) {
 	Synergon::EngineTempFunction();
 	Synergon::SamplesTempFunction();
 
-
-
 	return 0;
 }
 

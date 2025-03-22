@@ -8,7 +8,7 @@ namespace Synergon::Rhi {
 	   public:
 		virtual ~ITextureView() = default;
 
-		virtual std::shared_ptr<ITexture>         getTexture() const   = 0;
+		virtual std::shared_ptr<ITexture> getTexture() const = 0;
 
 		virtual TextureFormat      getFormat() const = 0;
 		virtual TextureUsage::Type getUsage() const  = 0;
