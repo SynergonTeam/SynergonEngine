@@ -4,6 +4,7 @@
 
 namespace Synergon::Rhi {
 	VkDevice::VkDevice() {
+		//implementing vulkan device creation
 	}
 
 	VkDevice::~VkDevice() {
