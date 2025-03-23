@@ -338,4 +338,9 @@ namespace Synergon::Rhi {
 		eDontCare  = 1,
 		eDontClear = 2,
 	};
+
+	enum class IndexType {
+		eUint16 = 0,
+		eUint32 = 1,
+	};
 }  // namespace Synergon::Rhi

@@ -3,13 +3,15 @@
 #include "Synergon/Rhi/Enums.hpp"
 
 #include "Synergon/Rhi/IBuffer.hpp"
+#include "Synergon/Rhi/IShaderInputPool.hpp"
 
 #include <memory>
 #include <cstdint>
 
 namespace Synergon::Rhi {
 	struct BufferViewDescriptor {
-		std::shared_ptr<IBuffer> buffer;
+		std::shared_ptr<IShaderInputPool> inputPool;
+		std::shared_ptr<IBuffer>          buffer;
 
 		BufferUsage::Type usage;
 		uint64_t          offset;

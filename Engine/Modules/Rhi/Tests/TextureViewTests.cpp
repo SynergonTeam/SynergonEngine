@@ -5,11 +5,10 @@ namespace Synergon::Rhi {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
-		constexpr TextureDescriptor     textureDescriptor{};
-		const std::shared_ptr<ITexture> texture = device->createTexture(textureDescriptor);
+		constexpr TextureDescriptor textureDescriptor{};
+		std::shared_ptr<ITexture>   texture = device->createTexture(textureDescriptor);
 
-		TextureViewDescriptor viewDescriptor{};
-		viewDescriptor.texture = texture;
+		const TextureViewDescriptor viewDescriptor{};
 
 		ASSERT_NO_THROW(std::shared_ptr<ITextureView> textureView = device->createTextureView(viewDescriptor));
 	}

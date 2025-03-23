@@ -36,38 +36,42 @@
 #include "Synergon/Rhi/ITextureView.hpp"
 
 #include <memory>
+#include <span>
 
 namespace Synergon::Rhi {
 	class IDevice {
 	   public:
 		virtual ~IDevice() = default;
 
-		virtual std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor& descriptor) = 0;
+		virtual void waitIdle() const                                               = 0;
+		virtual void waitForFences(std::span<std::shared_ptr<IFence>> fences) const = 0;
 
-		virtual std::shared_ptr<IBuffer>  createBuffer(const BufferDescriptor& descriptor)   = 0;
-		virtual std::shared_ptr<ITexture> createTexture(const TextureDescriptor& descriptor) = 0;
-		virtual std::shared_ptr<ISampler> createSampler(const SamplerDescriptor& descriptor) = 0;
+		virtual std::unique_ptr<IDisplay> createDisplay(const DisplayDescriptor& descriptor) const = 0;
 
-		virtual std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor& descriptor)   = 0;
-		virtual std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor& descriptor) = 0;
+		virtual std::shared_ptr<IBuffer>  createBuffer(const BufferDescriptor& descriptor) const   = 0;
+		virtual std::shared_ptr<ITexture> createTexture(const TextureDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<ISampler> createSampler(const SamplerDescriptor& descriptor) const = 0;
 
-		virtual std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor& descriptor) = 0;
-		virtual std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor& descriptor)         = 0;
+		virtual std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor& descriptor) const   = 0;
+		virtual std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor& descriptor) const = 0;
 
-		virtual std::shared_ptr<IShader> createShader(const ShaderDescriptor& descriptor) = 0;
+		virtual std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor& descriptor) const = 0;
+		virtual std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor& descriptor) const         = 0;
 
-		virtual std::shared_ptr<IShaderInputPool>      createShaderInputPool(const ShaderInputPoolDescriptor& descriptor)             = 0;
-		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderResourceInputLayoutDescriptor& descriptor) = 0;
-		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor& descriptor)  = 0;
-		virtual std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor)   = 0;
+		virtual std::shared_ptr<IShader> createShader(const ShaderDescriptor& descriptor) const = 0;
 
-		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor) = 0;
+		virtual std::shared_ptr<IShaderInputPool>      createShaderInputPool(const ShaderInputPoolDescriptor& descriptor) const             = 0;
+		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderResourceInputLayoutDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<IShaderInputLayout>    createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor& descriptor) const  = 0;
+		virtual std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor& descriptor) const   = 0;
 
-		virtual std::unique_ptr<IPipeline> createComputePipeline(const ComputePipelineDescriptor& descriptor)       = 0;
-		virtual std::unique_ptr<IPipeline> createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) = 0;
+		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor) const = 0;
 
-		virtual std::unique_ptr<IFence> createFence(const FenceDescriptor& descriptor) = 0;
+		virtual std::unique_ptr<IPipeline> createComputePipeline(const ComputePipelineDescriptor& descriptor) const       = 0;
+		virtual std::unique_ptr<IPipeline> createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) const = 0;
 
-		virtual std::string loadShaderByteCodeFromPath(std::string_view path) = 0;
+		virtual std::unique_ptr<IFence> createFence(const FenceDescriptor& descriptor) const = 0;
+
+		virtual std::string loadShaderByteCodeFromPath(std::string_view path) const = 0;
 	};
 }  // namespace Synergon::Rhi

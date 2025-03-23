@@ -6,11 +6,12 @@ namespace Synergon::Rhi {
 		const std::string              apiName = GetParam();
 		const std::unique_ptr<IDevice> device  = DeviceFactory::createDevice(StringToApiChoice(apiName));
 
-		auto shaderByteCode = device->loadShaderByteCodeFromPath("Assets/Shaders/Triangle");
+		std::vector<char> shaderBuffer;
+		shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
 		ShaderDescriptor vertexShaderDescriptor{};
-		vertexShaderDescriptor.type = ShaderCodeType::eNativeByteCode;
-		vertexShaderDescriptor.data = shaderByteCode;
+		vertexShaderDescriptor.type = ShaderCodeType::eShaderSlang;
+		vertexShaderDescriptor.data = shaderBuffer.data();
 
 		EXPECT_NO_THROW(std::shared_ptr<IShader> vertexShader = device->createShader(vertexShaderDescriptor));
 	}

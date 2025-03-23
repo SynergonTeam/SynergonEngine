@@ -1,8 +1,6 @@
 #include "TestClasses.hpp"
 #include "Synergon/Core/FileHelpers.hpp"
 
-#include <array>
-
 namespace Synergon::Rhi {
 	TEST_P(RenderTest, DefaultConstruction) {
 		const std::string        apiName = GetParam();
@@ -36,11 +34,12 @@ namespace Synergon::Rhi {
 			}
 
 			{
-				std::vector<uint32_t> samplerBindings = {0};
+				std::vector<uint32_t> samplerBindings = {2};
 
 				ShaderSamplerInputLayoutDescriptor samplerInputLayoutDescriptor;
 				samplerInputLayoutDescriptor.samplerBindings = samplerBindings;
 
+				// todo: I really think that we should directly pass vector of sampler bindings, users won't like this
 				sceneDataSamplerInputLayout = device->createShaderInputLayout(samplerInputLayoutDescriptor);
 			}
 
@@ -63,15 +62,15 @@ namespace Synergon::Rhi {
 		// shader module creation
 		{
 			std::vector<char> shaderBuffer;
-			std::string       byteCode = device->loadShaderByteCodeFromPath("Assets/Shaders/Triangle.slang");
+			shaderBuffer = Core::ReadFile("Assets/Shaders/Triangle.slang");
 
 			ShaderDescriptor vertexShaderDescriptor{};
 			vertexShaderDescriptor.type = ShaderCodeType::eShaderSlang;
-			vertexShaderDescriptor.data = byteCode;
+			vertexShaderDescriptor.data = shaderBuffer.data();
 
 			ShaderDescriptor fragmentShaderDescriptor{};
 			fragmentShaderDescriptor.type = ShaderCodeType::eShaderSlang;
-			vertexShaderDescriptor.data   = byteCode;
+			fragmentShaderDescriptor.data = shaderBuffer.data();
 
 			std::shared_ptr<IShader> vertexShader   = device->createShader(vertexShaderDescriptor);
 			std::shared_ptr<IShader> fragmentShader = device->createShader(vertexShaderDescriptor);
@@ -83,30 +82,29 @@ namespace Synergon::Rhi {
 			vertexShaderModule.entryPoint = "vsmain";
 		}
 
+		// todo: multiple vertex layouts for one pipeline might not be supported for dx12
 		std::vector<VertexInputLayout> vertexInputLayouts;
 		{
 			std::vector<VertexAttribute> vertexAttributes{
 			    {VertexFormat::eFloat32x4, 0, 0},
-			    {VertexFormat::eFloat32x2, 16, 0},
+			    {VertexFormat::eFloat32x4, 16, 0},
+			    {VertexFormat::eFloat32x2, 32, 0},
 			};
 
 			VertexInputLayout vertexInputLayout;
-			vertexInputLayout.stepMode    = VertexStepMode::eVertex;
 			vertexInputLayout.attributes  = vertexAttributes;
-			vertexInputLayout.arrayStride = 24;
+			vertexInputLayout.arrayStride = 48;
 		}
 
 		std::unique_ptr<IPipeline> pipeline;
 		// pipeline creation
 		{
-			std::vector colorAttachment{TextureFormat::eRGBA32Float};
-
 			RasterizerPipelineDescriptor rasterizerPipelineDescriptor{};
-			rasterizerPipelineDescriptor.layout                 = layout;
-			rasterizerPipelineDescriptor.vertexShaderModule     = vertexShaderModule;
-			rasterizerPipelineDescriptor.fragmentShaderModule   = fragmentShaderModule;
-			rasterizerPipelineDescriptor.inputLayouts           = vertexInputLayouts;
-			rasterizerPipelineDescriptor.colorAttachmentFormats = colorAttachment;
+			rasterizerPipelineDescriptor.layout               = layout;
+			rasterizerPipelineDescriptor.vertexShaderModule   = vertexShaderModule;
+			rasterizerPipelineDescriptor.fragmentShaderModule = fragmentShaderModule;
+			// todo: multiple vertex layouts for one pipeline might not be supported for dx12
+			rasterizerPipelineDescriptor.inputLayouts = vertexInputLayouts;
 
 			pipeline = device->createRasterizerPipeline(rasterizerPipelineDescriptor);
 		}
@@ -146,107 +144,7 @@ namespace Synergon::Rhi {
 			samplerInputContainer = device->createShaderInputContainer(resourceInputContainerDescriptor);
 		}
 
-		constexpr uint16_t MAX_INSTANCES_COUNT = 10000;
-
-		struct InstanceData {
-			std::array<float, 16> modelMatrix;
-		};
-
-		struct Vertex {
-			std::array<float, 4> position;
-			std::array<float, 2> uv;
-		};
-
-		std::shared_ptr<IBuffer>  instanceDatasBuffer;
-		std::shared_ptr<IBuffer>  verticesBuffer;
-		std::shared_ptr<ITexture> texture;
-		std::shared_ptr<ISampler> sampler;
-		// gpu resources creation
-		{
-			// instances data
-			{
-				BufferDescriptor bufferDescriptor{};
-				bufferDescriptor.size  = sizeof(InstanceData) * MAX_INSTANCES_COUNT;
-				bufferDescriptor.usage = BufferUsage::eStorage;
-
-				instanceDatasBuffer = device->createBuffer(bufferDescriptor);
-			}
-			// vertices
-			{
-				BufferDescriptor bufferDescriptor{};
-				bufferDescriptor.size  = sizeof(Vertex) * 3;
-				bufferDescriptor.usage = BufferUsage::eVertex;
-
-				verticesBuffer = device->createBuffer(bufferDescriptor);
-			}
-			// texture
-			{
-				TextureDescriptor textureDescriptor{};
-				textureDescriptor.format      = TextureFormat::eRGBA32Float;
-				textureDescriptor.memoryUsage = MemoryUsage::eGpu;
-				textureDescriptor.usage       = TextureUsage::eSampled;
-
-				texture = device->createTexture(textureDescriptor);
-			}
-			// sampler
-			{
-				SamplerDescriptor samplerDescriptor{};
-				sampler = device->createSampler(samplerDescriptor);
-			}
-		}
-
-		// resource views
-		std::shared_ptr<ITextureView> textureView;
-		std::shared_ptr<IBufferView>  vertexBufferView;
-		std::shared_ptr<IBufferView>  instanceDataBufferBufferView;
-		{
-			TextureViewDescriptor textureViewDescriptor{};
-			textureViewDescriptor.texture = texture;
-			// cant we get these info from the texture this view is pointing
-			textureViewDescriptor.format = TextureFormat::eRGBA32Float;
-			textureViewDescriptor.usage  = TextureUsage::eSampled;
-
-			textureView = device->createTextureView(textureViewDescriptor);
-
-			BufferViewDescriptor bufferViewDescriptor{};
-			bufferViewDescriptor.buffer = verticesBuffer;
-			bufferViewDescriptor.usage  = BufferUsage::eVertex;
-			bufferViewDescriptor.offset = 0;
-			bufferViewDescriptor.size   = sizeof(Vertex) * 3;
-
-			vertexBufferView = device->createBufferView(bufferViewDescriptor);
-
-			BufferViewDescriptor instanceDataViewDescriptor{};
-			instanceDataViewDescriptor.buffer = instanceDatasBuffer;
-			instanceDataViewDescriptor.usage  = BufferUsage::eStorage;
-			instanceDataViewDescriptor.offset = 0;
-			instanceDataViewDescriptor.size   = sizeof(InstanceData) * MAX_INSTANCES_COUNT;
-		}
-
-		// Binding resources
-		{
-			resourceInputContainer->bindStorageBuffer(0, instanceDataBufferBufferView);
-			resourceInputContainer->bindSampledTexture(1, textureView);
-
-			samplerInputContainer->bindSampler(0, sampler);
-		}
-
-		std::unique_ptr<ICommandBuffer> commandBuffer;
-		std::unique_ptr<ICommandAllocator> allocator;
-		std::unique_ptr<ICommandQueue> queue;
-		// commands
-		{
-			constexpr CommandAllocatorDescriptor descriptor{};
-			allocator = device->createCommandAllocator(descriptor);
-			constexpr CommandBufferDescriptor commandBufferDescriptor{};
-			commandBuffer = allocator->allocateCommandBuffer(commandBufferDescriptor);
-			CommandQueueDescriptor commandQueueDescriptor{};
-			queue = device->createCommandQueue(commandQueueDescriptor);
-		}
-
-		// render one frame
-		{
-		}
+		// todo: buffer and texture creation
 	}
 
 	INSTANTIATE_TEST_SUITE_P(
