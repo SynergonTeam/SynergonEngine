@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Synergon/Rhi/ISampler.hpp"
+#include "Synergon/Rhi/IBuffer.hpp"
 
 namespace Synergon::Rhi {
-
-	class VkSampler : public ISampler {
+	class SVkBuffer : public IBuffer {
 	   public:
 	   private:
 	};
-
 }  // namespace Synergon::Rhi

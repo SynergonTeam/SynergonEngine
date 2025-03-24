@@ -3,6 +3,6 @@
 #include "Synergon/Rhi/ICommandQueue.hpp"
 
 namespace Synergon::Rhi {
-	class VkCommandQueue final : public ICommandQueue {
+	class SVkCommandQueue final : public ICommandQueue {
 	};
 }  // namespace Synergon::Rhi

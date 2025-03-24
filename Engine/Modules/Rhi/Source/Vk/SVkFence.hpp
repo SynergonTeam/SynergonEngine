@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Synergon/Rhi/ITextureView.hpp"
+#include "Synergon/Rhi/IFence.hpp"
 
 namespace Synergon::Rhi {
-	class VkTextureView : public ITextureView {
+	class SVkFence : public IFence {
 	   public:
 	   private:
 	};

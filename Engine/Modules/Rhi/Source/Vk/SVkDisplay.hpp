@@ -3,6 +3,6 @@
 #include "Synergon/Rhi/IDisplay.hpp"
 
 namespace Synergon::Rhi {
-	class VkDisplay : public IDisplay {
+	class SVkDisplay : public IDisplay {
 	};
 }  // namespace Synergon::Rhi

@@ -3,7 +3,7 @@
 #include "Synergon/Rhi/IShaderInputContainer.hpp"
 
 namespace Synergon::Rhi {
-	class VkShaderInputContainer final : public IShaderInputContainer {
+	class SVkShaderInputContainer final : public IShaderInputContainer {
 	   public:
 	   private:
 	};

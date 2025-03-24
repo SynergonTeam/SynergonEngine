@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Synergon/Rhi/IFence.hpp"
+#include "Synergon/Rhi/IPipelineLayout.hpp"
 
 namespace Synergon::Rhi {
-	class VkFence : public IFence {
+	class SVkPipelineLayout : public IPipelineLayout {
 	   public:
 	   private:
 	};
