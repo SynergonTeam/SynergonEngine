@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <vulkan/vulkan.h>
+#include <vector>
 
 namespace Synergon::Rhi {
 	VulkanDevice::VulkanDevice() {
@@ -104,7 +105,7 @@ namespace Synergon::Rhi {
 		appInfo.sType              = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 		appInfo.pApplicationName   = "Synergon App";
 		appInfo.applicationVersion = VK_MAKE_VERSION(0, 0, 1);
-		appInfo.pEngineName        = "No Engine";
+		appInfo.pEngineName        = "Synergon Engine";
 		appInfo.engineVersion      = VK_MAKE_VERSION(0, 0, 1);
 		appInfo.apiVersion         = VK_API_VERSION_1_3;
 
@@ -120,14 +121,76 @@ namespace Synergon::Rhi {
 		if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to create Vulkan instance.");
 		}
+
+
 	}
 
 	void VulkanDevice::pickPhysicalDevice() {
+		uint32_t deviceCount = 0;
+		vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+		if (deviceCount == 0) {
+			throw std::runtime_error("Failed to find GPUs with Vulkan support.");
+		}
+
+		std::vector<VkPhysicalDevice> devices(deviceCount);
+		vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
+
+		// TODO provide device selection mechanism
+		for (const auto &device : devices) {
+			if (isDeviceSuitable(device)) {
+				physicalDevice = device;
+				break;
+			}
+		}
+
+		if (physicalDevice == VK_NULL_HANDLE) {
+			throw std::runtime_error("Failed to find a suitable GPU.");
+		}
+	}
+
+    bool VulkanDevice::isDeviceSuitable(VkPhysicalDevice device) {
+		uint32_t queueFamilyCount = 0;
+		vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
+
+		std::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
+		vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, queueFamilies.data());
+
+		for (uint32_t i = 0; i < queueFamilies.size(); i++) {
+			if (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+				graphicsQueueFamilyIndex = i;
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void VulkanDevice::createLogicalDevice() {
+		float queuePriority = 1.0f;
+
+		VkDeviceQueueCreateInfo queueCreateInfo{};
+		queueCreateInfo.sType            = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+		queueCreateInfo.queueFamilyIndex = graphicsQueueFamilyIndex;
+		queueCreateInfo.queueCount       = 1;
+		queueCreateInfo.pQueuePriorities = &queuePriority;
+
+		VkPhysicalDeviceFeatures deviceFeatures{};
+
+		VkDeviceCreateInfo createInfo{};
+		createInfo.sType                = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
+		createInfo.pQueueCreateInfos    = &queueCreateInfo;
+		createInfo.queueCreateInfoCount = 1;
+		createInfo.pEnabledFeatures     = &deviceFeatures;
+
+		createInfo.enabledExtensionCount = 0;
+		createInfo.enabledLayerCount     = 0;
+
+		if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device) != VK_SUCCESS) {
+			throw std::runtime_error("Failed to create logical device.");
+		}
 	}
 
 	void VulkanDevice::cleanupDevice() noexcept {
+		vkDestroyDevice(device, nullptr);
+		vkDestroyInstance(instance, nullptr);
 	}
 }  // namespace Synergon::Rhi

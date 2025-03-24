@@ -46,9 +46,11 @@ namespace Synergon::Rhi {
 		void createInstance();
 		void pickPhysicalDevice();
 		void createLogicalDevice();
-		VkInstance       instance;
+		bool isDeviceSuitable(VkPhysicalDevice device);
+		VkInstance       instance       = VK_NULL_HANDLE;
 		VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
-		VkDevice         device;
+		VkDevice         device         = VK_NULL_HANDLE;
+		uint32_t         graphicsQueueFamilyIndex = -1;
 	};
 
 	inline std::unique_ptr<IDevice> CreateVkDevice() {
