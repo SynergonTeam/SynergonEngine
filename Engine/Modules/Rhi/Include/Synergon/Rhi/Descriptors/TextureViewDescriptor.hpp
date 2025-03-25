@@ -1,10 +1,18 @@
-#ifndef SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP
-#define SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
+#include "Synergon/Rhi/IShaderInputPool.hpp"
+#include "Synergon/Rhi/ITexture.hpp"
+
+#include <memory>
+#include <cstdint>
+
 namespace Synergon::Rhi {
 	struct TextureViewDescriptor {
+		std::shared_ptr<IShaderInputPool> pool;
+		std::shared_ptr<ITexture>         texture;
+
 		TextureFormat      format;
 		TextureUsage::Type usage;
 
@@ -17,5 +25,3 @@ namespace Synergon::Rhi {
 		TextureDimension    dimension = TextureDimension::e2D;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_TEXTUREVIEWDESCRIPTOR_HPP

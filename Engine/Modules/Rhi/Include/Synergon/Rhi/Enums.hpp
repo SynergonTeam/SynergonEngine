@@ -1,5 +1,6 @@
-#ifndef SYNERGON_RHI_ENUMS_HPP
-#define SYNERGON_RHI_ENUMS_HPP
+#pragma once
+
+#include <cstdint>
 
 namespace Synergon::Rhi {
 	enum class MemoryUsage {
@@ -10,7 +11,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct BufferUsage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eVertex      = 1 << 0,
 			eIndex       = 1 << 1,
 			eUniform     = 1 << 2,
@@ -22,7 +25,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct TextureUsage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eSampled                = 1 << 0,
 			eColorAttachment        = 1 << 1,
 			eDepthStencilAttachment = 1 << 5,
@@ -40,7 +45,9 @@ namespace Synergon::Rhi {
 	};
 
 	struct TextureAspect {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eUndefined    = 0,
 			eColor        = 1 << 0,
 			eDepth        = 1 << 2,
@@ -133,21 +140,27 @@ namespace Synergon::Rhi {
 	};
 
 	struct ShaderStage {
-		enum Type {
+		typedef uint8_t Type;
+
+		enum Flags : uint8_t {
 			eVertex   = 1 << 0,
 			eFragment = 1 << 1,
 			eCompute  = 1 << 2,
 		};
 	};
 
-	struct ShaderInputType {
-		enum Type {
-			eSampler       = 1 << 0,
-			eSampledImage  = 1 << 1,
-			eStorageImage  = 1 << 2,
-			eUniformBuffer = 1 << 3,
-			eStorageBuffer = 1 << 4,
-		};
+	enum class ShaderResourceInputType {
+		eSampledTexture = 0,
+		eStorageTexture = 1,
+		eUniformBuffer  = 2,
+		eStorageBuffer  = 3,
+	};
+
+	enum class ShaderInputType {
+		eResource               = 0,
+		eSampler                = 1,
+		eColorAttachment        = 2,
+		eDepthStencilAttachment = 3,
 	};
 
 	enum class CompositeAlphaMode {
@@ -295,6 +308,39 @@ namespace Synergon::Rhi {
 		Copy     = 2,
 		Bundle   = 3,
 	};
-}  // namespace Synergon::Rhi
 
-#endif  // SYNERGON_RHI_ENUMS_HPP
+	enum class ShaderCodeType {
+		eShaderSlang    = 0,
+		eNativeByteCode = 1,
+	};
+
+	enum class BufferMapType {
+		eRead      = 0,
+		eWrite     = 1,
+		eReadWrite = 2,
+	};
+
+	enum class BufferMapState {
+		eUnmapped        = 0,
+		eMappedRead      = 1,
+		eMappedWrite     = 2,
+		eMappedReadWrite = 3,
+	};
+
+	enum class LoadOp {
+		eLoad     = 0,
+		eClear    = 1,
+		eDontCare = 2,
+	};
+
+	enum class StoreOp {
+		eStore     = 0,
+		eDontCare  = 1,
+		eDontClear = 2,
+	};
+
+	enum class IndexType {
+		eUint16 = 0,
+		eUint32 = 1,
+	};
+}  // namespace Synergon::Rhi

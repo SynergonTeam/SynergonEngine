@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_TEXTUREDESCRIPTOR_HPP
-#define SYNERGON_RHI_TEXTUREDESCRIPTOR_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 
@@ -19,5 +18,3 @@ namespace Synergon::Rhi {
 		TextureDimension dimension = TextureDimension::e2D;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_TEXTUREDESCRIPTOR_HPP

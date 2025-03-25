@@ -1,8 +1,5 @@
-#ifndef SYNERGON_ENGINE_HPP
-#define SYNERGON_ENGINE_HPP
+#pragma once
 
 namespace Synergon {
 	void EngineTempFunction();
 }
-
-#endif  // #ifndef SYNERGON_ENGINE_HPP

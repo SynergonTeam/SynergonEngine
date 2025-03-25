@@ -19,5 +19,6 @@ add_executable(SynergonRhiTests
 
 target_link_libraries(SynergonRhiTests PRIVATE SynergonRhi)
 target_link_libraries(SynergonRhiTests PRIVATE GTest::gtest_main)
+target_link_libraries(SynergonRhiTests PRIVATE SynergonCore)
 
 set_property(TARGET SynergonRhiTests PROPERTY FOLDER "Engine/Modules/Rhi")

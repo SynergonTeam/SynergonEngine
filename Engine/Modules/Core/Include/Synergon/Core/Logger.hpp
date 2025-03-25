@@ -1,10 +1,14 @@
-#ifndef LOGGER_HPP
-#define LOGGER_HPP
+#pragma once
 
 #include <string>
 
 namespace Synergon::Core {
 
-}
+	class A {
+	   public:
+		void ola();
 
-#endif
+		void hello();
+	};
+
+}  // namespace Synergon::Core

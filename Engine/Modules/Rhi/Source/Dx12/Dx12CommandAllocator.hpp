@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_DX12COMMANDALLOCATOR_HPP
-#define SYNERGON_RHI_DX12COMMANDALLOCATOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/ICommandAllocator.hpp"
 #include "Synergon/Rhi/Descriptors/CommandBufferDescriptor.hpp"
@@ -14,5 +13,3 @@ namespace Synergon::Rhi {
 	   private:
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_DX12COMMANDALLOCATOR_HPP

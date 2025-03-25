@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ICOMMANDALLOCATOR_HPP
-#define SYNERGON_RHI_ICOMMANDALLOCATOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/ICommandBuffer.hpp"
 #include "Synergon/Rhi/Descriptors/CommandBufferDescriptor.hpp"
@@ -11,8 +10,10 @@ namespace Synergon::Rhi {
 	   public:
 		virtual ~ICommandAllocator() = default;
 
-		virtual std::unique_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor& descriptor) = 0;
+		virtual void reset() const = 0;
+
+		virtual std::unique_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor& descriptor) const = 0;
+
+		virtual CommandType getCommandType() const = 0;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // #ifndef SYNERGON_RHI_ICOMMANDALLOCATOR_HPP

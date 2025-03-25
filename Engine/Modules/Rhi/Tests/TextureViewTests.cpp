@@ -8,7 +8,7 @@ namespace Synergon::Rhi {
 		constexpr TextureDescriptor textureDescriptor{};
 		std::shared_ptr<ITexture>   texture = device->createTexture(textureDescriptor);
 
-		constexpr TextureViewDescriptor viewDescriptor{};
+		const TextureViewDescriptor viewDescriptor{};
 
 		ASSERT_NO_THROW(std::shared_ptr<ITextureView> textureView = device->createTextureView(viewDescriptor));
 	}

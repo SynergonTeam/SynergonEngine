@@ -1,9 +1,8 @@
-#ifndef SYNERGON_RHI_ICOMMANDQUEUE_HPP
-#define SYNERGON_RHI_ICOMMANDQUEUE_HPP
+#pragma once
+
+#include "Synergon/Rhi/ICommandQueue.hpp"
 
 namespace Synergon::Rhi {
-	class ICommandQueue {
+	class Dx12CommandQueue final : public ICommandQueue {
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ICOMMANDQUEUE_HPP

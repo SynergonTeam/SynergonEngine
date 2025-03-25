@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP
-#define SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP
+#pragma once
 
 namespace Synergon::Rhi {
 	class IShaderInputLayout {
@@ -7,5 +6,3 @@ namespace Synergon::Rhi {
 		virtual ~IShaderInputLayout() = default;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_ISHADERINPUTLAYOUT_HPP

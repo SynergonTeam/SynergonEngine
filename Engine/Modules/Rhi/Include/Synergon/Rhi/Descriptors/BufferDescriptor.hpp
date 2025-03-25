@@ -1,5 +1,4 @@
-#ifndef SYNERGON_RHI_BUFFERDESCRIPTOR_HPP
-#define SYNERGON_RHI_BUFFERDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
 
@@ -12,5 +11,3 @@ namespace Synergon::Rhi {
 		uint64_t          size;
 	};
 }  // namespace Synergon::Rhi
-
-#endif

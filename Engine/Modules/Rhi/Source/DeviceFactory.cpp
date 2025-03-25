@@ -1,6 +1,7 @@
 #include "Synergon/Rhi/Factory/DeviceFactory.hpp"
 
 #include "Dx12/Dx12Device.hpp"
+#include "Vk/VkDevice.hpp"
 
 namespace Synergon::Rhi {
 
@@ -10,6 +11,7 @@ namespace Synergon::Rhi {
 				return CreateDx12Device();
 			}
 			case ApiChoice::eVulkan: {
+				return CreateVkDevice();
 			}
 			case ApiChoice::eCustom: {
 				if (customFactoryFunction == nullptr) {

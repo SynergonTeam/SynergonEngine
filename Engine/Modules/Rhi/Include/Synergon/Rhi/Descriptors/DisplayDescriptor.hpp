@@ -1,9 +1,6 @@
-#ifndef SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP
-#define SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP
+#pragma once
 
 #include "Synergon/Rhi/Enums.hpp"
-
-#include <cstdint>
 
 namespace Synergon::Rhi {
 	typedef void* WindowHandle;
@@ -14,14 +11,9 @@ namespace Synergon::Rhi {
 		TextureFormat      format;
 		TextureUsage::Type usage;
 
-		/* // We can get the window width and height from the window handle
-		uint32_t width;
-		uint32_t height;
-		*/
+		uint32_t textureCount = 2u;
 
 		PresentMode        presentMode        = PresentMode::eFifo;
 		CompositeAlphaMode compositeAlphaMode = CompositeAlphaMode::eOpaque;
 	};
 }  // namespace Synergon::Rhi
-
-#endif  // SYNERGON_RHI_DISPLAYDESCRIPTOR_HPP
