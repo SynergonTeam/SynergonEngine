@@ -6,101 +6,101 @@
 #include <vector>
 
 namespace Synergon::Rhi {
-	VulkanDevice::VulkanDevice() {
+	SVkDevice::SVkDevice() {
 	}
 
-	VulkanDevice::~VulkanDevice() {
+	SVkDevice::~SVkDevice() {
 		// TODO cleanup should be done in global cleanup function
 		cleanupDevice();
 	}
 
-	void VulkanDevice::waitIdle() const {
+	void SVkDevice::waitIdle() const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	void VulkanDevice::waitForFences(std::span<std::shared_ptr<IFence>> fences) const {
+	void SVkDevice::waitForFences(std::span<std::shared_ptr<IFence>> fences) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IDisplay> VulkanDevice::createDisplay(const DisplayDescriptor &descriptor) const {
+	std::unique_ptr<IDisplay> SVkDevice::createDisplay(const DisplayDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IBuffer> VulkanDevice::createBuffer(const BufferDescriptor &descriptor) const {
+	std::shared_ptr<IBuffer> SVkDevice::createBuffer(const BufferDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<ITexture> VulkanDevice::createTexture(const TextureDescriptor &descriptor) const {
+	std::shared_ptr<ITexture> SVkDevice::createTexture(const TextureDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<ISampler> VulkanDevice::createSampler(const SamplerDescriptor &descriptor) const {
+	std::shared_ptr<ISampler> SVkDevice::createSampler(const SamplerDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IBufferView> VulkanDevice::createBufferView(const BufferViewDescriptor &descriptor) const {
+	std::shared_ptr<IBufferView> SVkDevice::createBufferView(const BufferViewDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<ITextureView> VulkanDevice::createTextureView(const TextureViewDescriptor &descriptor) const {
+	std::shared_ptr<ITextureView> SVkDevice::createTextureView(const TextureViewDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<ICommandAllocator> VulkanDevice::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
+	std::unique_ptr<ICommandAllocator> SVkDevice::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<ICommandQueue> VulkanDevice::createCommandQueue(const CommandQueueDescriptor &descriptor) const {
+	std::unique_ptr<ICommandQueue> SVkDevice::createCommandQueue(const CommandQueueDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IShader> VulkanDevice::createShader(const ShaderDescriptor &descriptor) const {
+	std::shared_ptr<IShader> SVkDevice::createShader(const ShaderDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IShaderInputPool> VulkanDevice::createShaderInputPool(const ShaderInputPoolDescriptor &descriptor) const {
+	std::shared_ptr<IShaderInputPool> SVkDevice::createShaderInputPool(const ShaderInputPoolDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IShaderInputLayout> VulkanDevice::createShaderInputLayout(const ShaderResourceInputLayoutDescriptor &descriptor) const {
+	std::shared_ptr<IShaderInputLayout> SVkDevice::createShaderInputLayout(const ShaderResourceInputLayoutDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IShaderInputLayout> VulkanDevice::createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor &descriptor) const {
+	std::shared_ptr<IShaderInputLayout> SVkDevice::createShaderInputLayout(const ShaderSamplerInputLayoutDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IShaderInputContainer> VulkanDevice::createShaderInputContainer(const ShaderInputContainerDescriptor &descriptor) const {
+	std::shared_ptr<IShaderInputContainer> SVkDevice::createShaderInputContainer(const ShaderInputContainerDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::shared_ptr<IPipelineLayout> VulkanDevice::createPipelineLayout(const PipelineLayoutDescriptor &descriptor) const {
+	std::shared_ptr<IPipelineLayout> SVkDevice::createPipelineLayout(const PipelineLayoutDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> VulkanDevice::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
+	std::unique_ptr<IPipeline> SVkDevice::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> VulkanDevice::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
+	std::unique_ptr<IPipeline> SVkDevice::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IFence> VulkanDevice::createFence(const FenceDescriptor &descriptor) const {
+	std::unique_ptr<IFence> SVkDevice::createFence(const FenceDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::string VulkanDevice::loadShaderByteCodeFromPath(std::string_view path) const {
+	std::string SVkDevice::loadShaderByteCodeFromPath(std::string_view path) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	void VulkanDevice::initDevice() {
+	void SVkDevice::initDevice() {
 		createInstance();
 		pickPhysicalDevice();
 		createLogicalDevice();
 	}
 
-	void VulkanDevice::createInstance() {
+	void SVkDevice::createInstance() {
 		VkApplicationInfo appInfo{};
 		appInfo.sType              = VK_STRUCTURE_TYPE_APPLICATION_INFO;
 		appInfo.pApplicationName   = "Synergon App";
@@ -125,7 +125,7 @@ namespace Synergon::Rhi {
 
 	}
 
-	void VulkanDevice::pickPhysicalDevice() {
+	void SVkDevice::pickPhysicalDevice() {
 		uint32_t deviceCount = 0;
 		vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
 		if (deviceCount == 0) {
@@ -148,7 +148,7 @@ namespace Synergon::Rhi {
 		}
 	}
 
-    bool VulkanDevice::isDeviceSuitable(VkPhysicalDevice device) {
+    bool SVkDevice::isDeviceSuitable(VkPhysicalDevice device) {
 		uint32_t queueFamilyCount = 0;
 		vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
 
@@ -164,7 +164,7 @@ namespace Synergon::Rhi {
 		return false;
 	}
 
-	void VulkanDevice::createLogicalDevice() {
+	void SVkDevice::createLogicalDevice() {
 		float queuePriority = 1.0f;
 
 		VkDeviceQueueCreateInfo queueCreateInfo{};
@@ -189,7 +189,7 @@ namespace Synergon::Rhi {
 		}
 	}
 
-	void VulkanDevice::cleanupDevice() noexcept {
+	void SVkDevice::cleanupDevice() noexcept {
 		vkDestroyDevice(device, nullptr);
 		vkDestroyInstance(instance, nullptr);
 	}

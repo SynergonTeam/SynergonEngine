@@ -5,10 +5,10 @@
 
 
 namespace Synergon::Rhi {
-	class VulkanDevice final : public IDevice {
+	class SVkDevice final : public IDevice {
 	public:
-		VulkanDevice();
-		virtual ~VulkanDevice() override;
+		SVkDevice();
+		virtual ~SVkDevice() override;
 
 		void waitIdle() const override;
 		void waitForFences(std::span<std::shared_ptr<IFence>> fences) const override;
@@ -54,10 +54,10 @@ namespace Synergon::Rhi {
 	};
 
 	inline std::unique_ptr<IDevice> CreateVkDevice() {
-		auto SVkDevice = std::make_unique<VulkanDevice>();
-		SVkDevice->initDevice();
-		
-		return SVkDevice;
+		auto device = std::make_unique<SVkDevice>();
+		device->initDevice();
+
+		return device;
 	}
 
 }  // namespace Synergon::Rhi
