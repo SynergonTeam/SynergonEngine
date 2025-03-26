@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_NO_THROW(device->createPipelineLayout(pipelineLayoutDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, PipelineLayoutTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

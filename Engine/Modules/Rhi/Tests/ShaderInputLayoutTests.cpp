@@ -13,8 +13,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(auto inputLayout = device->createShaderInputLayout(inputLayoutDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, ShaderInputLayoutTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

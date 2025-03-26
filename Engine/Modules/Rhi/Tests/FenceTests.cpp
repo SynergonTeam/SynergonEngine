@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(auto fence = device->createFence(descriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, FenceTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

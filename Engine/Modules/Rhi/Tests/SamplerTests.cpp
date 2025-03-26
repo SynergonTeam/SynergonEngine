@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_NO_THROW(std::shared_ptr<ISampler> sampler = device->createSampler(descriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, SamplerTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

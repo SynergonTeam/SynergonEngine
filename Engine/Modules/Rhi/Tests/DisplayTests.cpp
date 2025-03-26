@@ -24,8 +24,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_THROW(device->createDisplay(displayDescriptor), std::exception);
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, DisplayTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

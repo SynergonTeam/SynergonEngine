@@ -146,8 +146,4 @@ namespace Synergon::Rhi {
 
 		// todo: buffer and texture creation
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, RenderTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

@@ -12,8 +12,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(std::shared_ptr<ITextureView> textureView = device->createTextureView(viewDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, TextureViewTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

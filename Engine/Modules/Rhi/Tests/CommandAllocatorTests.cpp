@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_NO_THROW(std::unique_ptr<ICommandAllocator> sampler = device->createCommandAllocator(descriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, CommandAllocatorTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

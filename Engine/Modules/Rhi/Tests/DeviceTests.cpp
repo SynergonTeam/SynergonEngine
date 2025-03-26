@@ -7,8 +7,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NE(device, nullptr);
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, DeviceTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi
