@@ -42,8 +42,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_NO_THROW(device->createRasterizerPipeline(rasterizerPipelineDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, PipelineTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

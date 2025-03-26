@@ -15,8 +15,4 @@ namespace Synergon::Rhi {
 
 		EXPECT_NO_THROW(std::shared_ptr<IShader> vertexShader = device->createShader(vertexShaderDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, ShaderTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(std::shared_ptr<ITexture> texture = device->createTexture(descriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, TextureTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

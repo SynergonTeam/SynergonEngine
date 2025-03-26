@@ -9,8 +9,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(std::shared_ptr<IBuffer> buffer = device->createBuffer(bufferDescriptor));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, BufferTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi

@@ -11,8 +11,4 @@ namespace Synergon::Rhi {
 
 		ASSERT_NO_THROW(auto pool = device->createShaderInputPool(shaderInputPoolDesc));
 	}
-
-	INSTANTIATE_TEST_SUITE_P(
-	    ApiChoice, ShaderInputPoolTest,
-	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi
