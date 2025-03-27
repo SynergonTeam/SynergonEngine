@@ -21,6 +21,8 @@ namespace Synergon::Rhi {
 
 	class BufferTest : public ::testing::TestWithParam<std::string> {};
 
+	class BufferViewTest : public ::testing::TestWithParam<std::string> {};
+
 	class CommandAllocatorTest : public ::testing::TestWithParam<std::string> {};
 
 	class CommandBufferTest : public ::testing::TestWithParam<std::string> {};
