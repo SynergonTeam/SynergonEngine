@@ -118,7 +118,7 @@ namespace Synergon::Rhi {
 		createInfo.ppEnabledExtensionNames = nullptr;
 		createInfo.enabledLayerCount       = 0;
 
-		if (vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
+		if (vkCreateInstance(&createInfo, nullptr, &m_Instance) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to create Vulkan instance.");
 		}
 
@@ -127,23 +127,23 @@ namespace Synergon::Rhi {
 
 	void SVkDevice::pickPhysicalDevice() {
 		uint32_t deviceCount = 0;
-		vkEnumeratePhysicalDevices(instance, &deviceCount, nullptr);
+		vkEnumeratePhysicalDevices(m_Instance, &deviceCount, nullptr);
 		if (deviceCount == 0) {
 			throw std::runtime_error("Failed to find GPUs with Vulkan support.");
 		}
 
 		std::vector<VkPhysicalDevice> devices(deviceCount);
-		vkEnumeratePhysicalDevices(instance, &deviceCount, devices.data());
+		vkEnumeratePhysicalDevices(m_Instance, &deviceCount, devices.data());
 
 		// TODO provide device selection mechanism
 		for (const auto &device : devices) {
 			if (isDeviceSuitable(device)) {
-				physicalDevice = device;
+				m_PhysicalDevice = device;
 				break;
 			}
 		}
 
-		if (physicalDevice == VK_NULL_HANDLE) {
+		if (m_PhysicalDevice == VK_NULL_HANDLE) {
 			throw std::runtime_error("Failed to find a suitable GPU.");
 		}
 	}
@@ -157,7 +157,7 @@ namespace Synergon::Rhi {
 
 		for (uint32_t i = 0; i < queueFamilies.size(); i++) {
 			if (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
-				graphicsQueueFamilyIndex = i;
+				m_GraphicsQueueFamilyIndex = i;
 				return true;
 			}
 		}
@@ -169,7 +169,7 @@ namespace Synergon::Rhi {
 
 		VkDeviceQueueCreateInfo queueCreateInfo{};
 		queueCreateInfo.sType            = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
-		queueCreateInfo.queueFamilyIndex = graphicsQueueFamilyIndex;
+		queueCreateInfo.queueFamilyIndex = m_GraphicsQueueFamilyIndex;
 		queueCreateInfo.queueCount       = 1;
 		queueCreateInfo.pQueuePriorities = &queuePriority;
 
@@ -184,13 +184,13 @@ namespace Synergon::Rhi {
 		createInfo.enabledExtensionCount = 0;
 		createInfo.enabledLayerCount     = 0;
 
-		if (vkCreateDevice(physicalDevice, &createInfo, nullptr, &device) != VK_SUCCESS) {
+		if (vkCreateDevice(m_PhysicalDevice, &createInfo, nullptr, &m_Device) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to create logical device.");
 		}
 	}
 
 	void SVkDevice::cleanupDevice() noexcept {
-		vkDestroyDevice(device, nullptr);
-		vkDestroyInstance(instance, nullptr);
+		vkDestroyDevice(m_Device, nullptr);
+		vkDestroyInstance(m_Instance, nullptr);
 	}
 }  // namespace Synergon::Rhi
