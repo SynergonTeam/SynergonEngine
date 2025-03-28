@@ -5,7 +5,7 @@
 #include <memory>
 
 namespace Synergon::Rhi {
-	class VkCommandAllocator final : public ICommandAllocator {
+	class SVkCommandAllocator final : public ICommandAllocator {
 	   public:
 		std::unique_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor &descriptor) override;
 	};

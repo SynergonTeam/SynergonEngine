@@ -79,6 +79,7 @@ else()
 endif()
 
 find_package(Vulkan REQUIRED)
+
 find_package(GTest CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 

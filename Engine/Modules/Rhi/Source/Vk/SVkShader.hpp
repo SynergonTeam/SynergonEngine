@@ -1,6 +1,6 @@
 #pragma once
 
 namespace Synergon::Rhi {
-	class VkShader {
+	class SVkShader {
 	};
 }  // namespace Synergon::Rhi

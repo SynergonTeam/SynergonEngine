@@ -25,9 +25,10 @@ add_library(SynergonRhi STATIC
 
 target_include_directories(SynergonRhi PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Include
+		#${Vulkan_INCLUDE_DIRS}
 )
 
-target_link_libraries(SynergonRhi PUBLIC SynergonCore)
+target_link_libraries(SynergonRhi PUBLIC SynergonCore Vulkan::Vulkan)
 
 set_property(TARGET SynergonRhi PROPERTY FOLDER "Engine/Modules/Rhi")
 

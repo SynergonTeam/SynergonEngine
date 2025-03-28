@@ -1,7 +1,7 @@
 #include "Synergon/Rhi/Factory/DeviceFactory.hpp"
 
 #include "Dx12/Dx12Device.hpp"
-#include "Vk/VkDevice.hpp"
+#include "Vk/SVkDevice.hpp"
 
 namespace Synergon::Rhi {
 

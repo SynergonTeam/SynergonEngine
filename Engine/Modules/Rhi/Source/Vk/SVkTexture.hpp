@@ -6,7 +6,7 @@
 #include <memory>
 
 namespace Synergon::Rhi {
-	class VkTexture {
+	class SVkTexture {
 	   public:
 		std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor& descriptor);
 	};

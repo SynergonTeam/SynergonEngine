@@ -3,7 +3,7 @@
 #include "Synergon/Rhi/IPipeline.hpp"
 
 namespace Synergon::Rhi {
-	class VkPipeline final : public IPipeline {
+	class SVkPipeline final : public IPipeline {
 	   public:
 	   private:
 	};

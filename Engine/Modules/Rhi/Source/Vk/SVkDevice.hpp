@@ -1,12 +1,14 @@
 #pragma once
 
 #include "Synergon/Rhi/IDevice.hpp"
+#include <vulkan/vulkan.h>
+
 
 namespace Synergon::Rhi {
-	class VkDevice final : public IDevice {
-	   public:
-		VkDevice();
-		~VkDevice() override;
+	class SVkDevice final : public IDevice {
+	public:
+		SVkDevice();
+		virtual ~SVkDevice() override;
 
 		void waitIdle() const override;
 		void waitForFences(std::span<std::shared_ptr<IFence>> fences) const override;
@@ -38,11 +40,24 @@ namespace Synergon::Rhi {
 
 		std::string loadShaderByteCodeFromPath(std::string_view path) const override;
 
-	   public:
+		void initDevice();
+		void cleanupDevice() noexcept;
+	private:
+		void createInstance();
+		void pickPhysicalDevice();
+		void createLogicalDevice();
+		bool isDeviceSuitable(VkPhysicalDevice device);
+		VkInstance       m_Instance       = VK_NULL_HANDLE;
+		VkPhysicalDevice m_PhysicalDevice = VK_NULL_HANDLE;
+		VkDevice         m_Device         = VK_NULL_HANDLE;
+		uint32_t         m_GraphicsQueueFamilyIndex = -1;
 	};
 
 	inline std::unique_ptr<IDevice> CreateVkDevice() {
-		return std::make_unique<VkDevice>();
+		auto device = std::make_unique<SVkDevice>();
+		device->initDevice();
+
+		return device;
 	}
 
 }  // namespace Synergon::Rhi

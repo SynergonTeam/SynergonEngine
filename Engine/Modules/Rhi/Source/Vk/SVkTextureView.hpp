@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Synergon/Rhi/IBuffer.hpp"
+#include "Synergon/Rhi/ITextureView.hpp"
 
 namespace Synergon::Rhi {
-	class VkBuffer : public IBuffer {
+	class SVkTextureView : public ITextureView {
 	   public:
 	   private:
 	};
