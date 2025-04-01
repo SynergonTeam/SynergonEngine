@@ -27,9 +27,12 @@ else()
     )
 endif()
 
-
 target_include_directories(SynergonCore PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
-set_property(TARGET SynergonCore PROPERTY FOLDER "Engine/Modules")
+target_link_libraries(SynergonCore PUBLIC glfw)
+
+set_property(TARGET SynergonCore PROPERTY FOLDER "Engine/Modules/Core")
+
+add_subdirectory(Tests)

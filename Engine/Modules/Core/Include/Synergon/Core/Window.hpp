@@ -1,0 +1,52 @@
+#pragma once
+
+#include "glfw/glfw3.h"
+
+#include "windows.h"
+
+#define GLFW_EXPOSE_NATIVE_WIN32
+#define GLFW_NATIVE_INCLUDE_NONE
+#include <GLFW/glfw3native.h>
+
+#include "Synergon/Core/Descriptors/WindowDescriptor.hpp"
+
+namespace Synergon::Core {
+
+	class Window {
+	   public:
+		Window(const WindowDescriptor& descriptor);
+		~Window();
+
+		Window(const Window&)            = delete;
+		Window& operator=(const Window&) = delete;
+		Window(Window&& other) noexcept;
+		Window& operator=(Window&& other) noexcept;
+
+		void Resize(uint32_t width, uint32_t height);
+
+		void pollEvents() const;
+		void close();
+		bool shouldClose() const;
+
+	   public:
+		uint32_t getWidth() const { return m_Width; }
+
+		std::string getTitle() const { return m_Title; }
+
+		uint32_t getHeight() const { return m_Height; }
+
+		GLFWwindow* getWindow() const { return m_Window; }
+
+		HWND getWin32Window() const { return glfwGetWin32Window(m_Window); }
+
+	   private:
+		void resizeCallback(GLFWwindow* window, int width, int height);
+
+		GLFWwindow* m_Window = nullptr;
+
+		uint32_t    m_Width  = 0;
+		uint32_t    m_Height = 0;
+		std::string m_Title  = "";
+	};
+
+}  // namespace Synergon::Core
