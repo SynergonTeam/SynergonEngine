@@ -21,7 +21,7 @@ namespace Synergon::Rhi {
 		uint32_t baseArrayLayer  = 0u;
 		uint32_t arrayLayerCount = 1u;
 
-		TextureAspect::Type aspect    = TextureAspect::eColor;
-		TextureDimension    dimension = TextureDimension::e2D;
+		TextureAspect::Type  aspect    = TextureAspect::eColor;
+		TextureViewDimension dimension = TextureViewDimension::e2D;
 	};
 }  // namespace Synergon::Rhi

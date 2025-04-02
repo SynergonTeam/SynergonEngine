@@ -44,6 +44,16 @@ namespace Synergon::Rhi {
 		eCube = 3,
 	};
 
+	enum class TextureViewDimension {
+		e1D        = 0,
+		e2D        = 1,
+		e3D        = 2,
+		eCube      = 3,
+		e1DArray   = 4,
+		e2DArray   = 5,
+		eCubeArray = 6,
+	};
+
 	struct TextureAspect {
 		typedef uint8_t Type;
 
