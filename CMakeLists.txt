@@ -83,6 +83,15 @@ find_package(Vulkan REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 
+# Execute it using --target docs in cmdline
+find_program(DOXYGEN doxygen)
+if(DOXYGEN)
+	add_custom_target(docs
+		COMMAND ${DOXYGEN} Doxyfile
+		COMMENT "Generating documentation.."
+	)
+endif()
+
 add_subdirectory(ThirdParty)
 add_subdirectory(Engine)
 
