@@ -22,7 +22,7 @@ namespace Synergon::Core {
 		Window(Window&& other) noexcept;
 		Window& operator=(Window&& other) noexcept;
 
-		void Resize(uint32_t width, uint32_t height);
+		void resize(uint32_t width, uint32_t height);
 
 		void pollEvents() const;
 		void close();

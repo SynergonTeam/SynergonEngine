@@ -71,7 +71,7 @@ namespace Synergon::Core {
 		userPointer->m_Height = height;
 	}
 
-	void Window::Resize(uint32_t width, uint32_t height) {
+	void Window::resize(uint32_t width, uint32_t height) {
 		m_Width  = width;
 		m_Height = height;
 		glfwSetWindowSize(m_Window, m_Width, m_Height);
