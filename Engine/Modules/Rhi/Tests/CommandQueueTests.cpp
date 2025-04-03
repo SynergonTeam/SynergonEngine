@@ -7,11 +7,11 @@ namespace Synergon::Rhi {
 
 		constexpr CommandAllocatorDescriptor descriptor{};
 
-		const std::unique_ptr<ICommandAllocator> allocator = device->createCommandAllocator(descriptor);
+		const std::shared_ptr<ICommandAllocator> allocator = device->createCommandAllocator(descriptor);
 
 		constexpr CommandBufferDescriptor commandBufferDescriptor{};
 
-		ASSERT_NO_THROW(std::unique_ptr<ICommandBuffer> commandBuffer = allocator->allocateCommandBuffer(commandBufferDescriptor));
+		ASSERT_NO_THROW(std::shared_ptr<ICommandBuffer> commandBuffer = allocator->allocateCommandBuffer(commandBufferDescriptor));
 	}
 
 	INSTANTIATE_TEST_SUITE_P(

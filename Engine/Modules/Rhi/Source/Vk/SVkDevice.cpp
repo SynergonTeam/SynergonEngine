@@ -46,7 +46,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<ICommandAllocator> SVkDevice::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
+	std::shared_ptr<ICommandAllocator> SVkDevice::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
@@ -78,15 +78,15 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> SVkDevice::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
+	std::shared_ptr<IPipeline> SVkDevice::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> SVkDevice::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
+	std::shared_ptr<IPipeline> SVkDevice::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IFence> SVkDevice::createFence(const FenceDescriptor &descriptor) const {
+	std::shared_ptr<IFence> SVkDevice::createFence(const FenceDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
@@ -121,8 +121,6 @@ namespace Synergon::Rhi {
 		if (vkCreateInstance(&createInfo, nullptr, &m_Instance) != VK_SUCCESS) {
 			throw std::runtime_error("Failed to create Vulkan instance.");
 		}
-
-
 	}
 
 	void SVkDevice::pickPhysicalDevice() {
@@ -148,7 +146,7 @@ namespace Synergon::Rhi {
 		}
 	}
 
-    bool SVkDevice::isDeviceSuitable(VkPhysicalDevice device) {
+	bool SVkDevice::isDeviceSuitable(VkPhysicalDevice device) {
 		uint32_t queueFamilyCount = 0;
 		vkGetPhysicalDeviceQueueFamilyProperties(device, &queueFamilyCount, nullptr);
 

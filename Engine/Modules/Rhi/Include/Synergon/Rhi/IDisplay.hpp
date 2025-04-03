@@ -16,7 +16,7 @@ namespace Synergon::Rhi {
 		virtual bool getCurrentTextureIndex(uint32_t &index) const                                     = 0;
 		virtual bool present(uint32_t index, const std::shared_ptr<ICommandQueue> &commandQueue) const = 0;
 
-		virtual std::span<const std::shared_ptr<ITexture>> getDisplayTextures() const = 0;
+		virtual std::span<std::shared_ptr<ITexture>> getDisplayTextures() const = 0;
 
 		virtual uint32_t getWidth() const  = 0;
 		virtual uint32_t getHeight() const = 0;

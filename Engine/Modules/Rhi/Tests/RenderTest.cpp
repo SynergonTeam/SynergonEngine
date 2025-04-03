@@ -96,7 +96,7 @@ namespace Synergon::Rhi {
 			vertexInputLayout.arrayStride = 48;
 		}
 
-		std::unique_ptr<IPipeline> pipeline;
+		std::shared_ptr<IPipeline> pipeline;
 		// pipeline creation
 		{
 			RasterizerPipelineDescriptor rasterizerPipelineDescriptor{};

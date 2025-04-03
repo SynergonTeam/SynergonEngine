@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.20)
 
 list(APPEND CMAKE_TOOLCHAIN_FILE $ENV{VCPKG_CMAKE})
 
+project(SynergonEngine LANGUAGES CXX VERSION 0.0.1)
+
+message(STATUS "Building the project with '${CMAKE_CXX_COMPILER}' compiler")
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
@@ -25,8 +29,6 @@ else()
     endif()
 endif()
 
-project(SynergonEngine LANGUAGES CXX VERSION 0.0.1)
-
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 17)
@@ -41,8 +43,15 @@ if(BUILD_SHARED_LIBS AND WIN32)
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
+include(ProcessorCount)
+ProcessorCount(SYNERGON_ENGINE_PROCESSOR_COUNT)
+
+math(EXPR SYNERGON_ENGINE_PROCESSOR_COUNT "${SYNERGON_ENGINE_PROCESSOR_COUNT} - 2" OUTPUT_FORMAT DECIMAL)
+
+message(STATUS "Building the project using ${SYNERGON_ENGINE_PROCESSOR_COUNT} cores")
+
 if(MSVC)
-    add_compile_options(/MP)
+    add_compile_options(/MP${SYNERGON_ENGINE_PROCESSOR_COUNT})
 
     add_compile_definitions(
         $<$<CONFIG:Release>:SYNERGON_ENGINE_BUILD_TYPE_RELEASE>
@@ -64,6 +73,8 @@ if(MSVC)
 # $<$<CONFIG:Release>:/LTCG>
 # )
 else()
+    set(CMAKE_BUILD_PARALLEL_LEVEL ${SYNERGON_ENGINE_PROCESSOR_COUNT})
+
     if(CMAKE_BUILD_TYPE MATCHES Release)
         add_compile_definitions(SYNERGON_ENGINE_BUILD_TYPE_RELEASE)
         add_compile_options(-O3 -funroll-loops)

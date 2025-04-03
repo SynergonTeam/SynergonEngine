@@ -12,7 +12,7 @@ namespace Synergon::Rhi {
 
 		virtual void reset() const = 0;
 
-		virtual std::unique_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<ICommandBuffer> allocateCommandBuffer(const CommandBufferDescriptor& descriptor) const = 0;
 
 		virtual CommandType getCommandType() const = 0;
 	};
