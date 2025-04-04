@@ -24,7 +24,7 @@ namespace Synergon::Window {
 
 		void resize(uint32_t width, uint32_t height);
 
-		void pollEvents() const;
+		static void pollEvents();
 		void close();
 		bool shouldClose() const;
 
@@ -40,7 +40,7 @@ namespace Synergon::Window {
 		HWND getWin32Window() const { return glfwGetWin32Window(m_Window); }
 
 	   private:
-		void resizeCallback(GLFWwindow* window, int width, int height);
+		static void resizeCallback(GLFWwindow* window, int width, int height);
 
 		GLFWwindow* m_Window = nullptr;
 

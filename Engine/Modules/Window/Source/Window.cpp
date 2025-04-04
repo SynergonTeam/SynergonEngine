@@ -21,6 +21,10 @@ namespace Synergon::Window {
 		if (descriptor.fullscreen) {
 			glfwSetWindowMonitor(m_Window, glfwGetPrimaryMonitor(), 0, 0, m_Width, m_Height, GLFW_DONT_CARE);
 		}
+
+		glfwSetFramebufferSizeCallback(m_Window, Window::resizeCallback);
+
+		glfwSetWindowUserPointer(m_Window, (void*)this);
 	}
 
 	Window::Window(Window&& other) noexcept {
@@ -30,6 +34,8 @@ namespace Synergon::Window {
 		m_Width  = other.m_Width;
 		m_Height = other.m_Height;
 		m_Title  = std::move(other.m_Title);
+
+		glfwSetWindowUserPointer(m_Window, (void*)this);
 	}
 
 	Window& Window::operator=(Window&& other) noexcept {
@@ -44,6 +50,8 @@ namespace Synergon::Window {
 		m_Height = other.m_Height;
 		m_Title  = std::move(other.m_Title);
 
+		glfwSetWindowUserPointer(m_Window, (void*)this);
+
 		return *this;
 	}
 
@@ -56,8 +64,7 @@ namespace Synergon::Window {
 		glfwSetWindowShouldClose(m_Window, GLFW_TRUE);
 	}
 
-	void Window::pollEvents() const {
-		glfwSetWindowUserPointer(m_Window, (void*)this);
+	void Window::pollEvents() {
 		glfwPollEvents();
 	}
 
@@ -66,7 +73,7 @@ namespace Synergon::Window {
 	}
 
 	void Window::resizeCallback(GLFWwindow* window, int width, int height) {
-		Window* userPointer   = (Window*)(glfwGetWindowUserPointer(window));
+		Window* userPointer   = static_cast<Window*>(glfwGetWindowUserPointer(window));
 		userPointer->m_Width  = width;
 		userPointer->m_Height = height;
 	}
