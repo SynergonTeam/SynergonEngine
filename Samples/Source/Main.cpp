@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 		Synergon::Window::Window window(descriptor);
 
 		while (!window.shouldClose()) {
-			window.pollEvents();
+			Synergon::Window::Window::pollEvents();
 		}
 	}
 
