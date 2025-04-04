@@ -1,17 +1,17 @@
 #include "TestClasses.hpp"
-#include "Synergon/Core/Window.hpp"
+#include "Synergon/Window/Window.hpp"
 
 TEST_P(WindowTest, WindowInitialization) {
 	auto [width, height, fullscreen, resizable] = GetParam();
 
-	Synergon::Core::WindowDescriptor descriptor;
+	Synergon::Window::WindowDescriptor descriptor;
 	descriptor.title      = "Test Window";
 	descriptor.width      = width;
 	descriptor.height     = height;
 	descriptor.fullscreen = fullscreen;
 	descriptor.resizable  = resizable;
 
-	Synergon::Core::Window window(descriptor);
+	Synergon::Window::Window window(descriptor);
 
 	ASSERT_NE(window.getWindow(), nullptr);
 }

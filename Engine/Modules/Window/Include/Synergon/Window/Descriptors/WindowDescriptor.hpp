@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <string>
 
-namespace Synergon::Core {
+namespace Synergon::Window {
 
 	struct WindowDescriptor {
 		uint32_t    width      = 0;

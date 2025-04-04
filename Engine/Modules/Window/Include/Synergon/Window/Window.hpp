@@ -8,9 +8,9 @@
 #define GLFW_NATIVE_INCLUDE_NONE
 #include <GLFW/glfw3native.h>
 
-#include "Synergon/Core/Descriptors/WindowDescriptor.hpp"
+#include "Synergon/Window/Descriptors/WindowDescriptor.hpp"
 
-namespace Synergon::Core {
+namespace Synergon::Window {
 
 	class Window {
 	   public:

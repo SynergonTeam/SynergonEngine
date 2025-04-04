@@ -1,7 +1,7 @@
 #include "Synergon/Engine.hpp"
 #include <Synergon/Samples.hpp>
 
-#include "Synergon/Core/Window.hpp"
+#include "Synergon/Window/Window.hpp"
 
 int main(int argc, char **argv) {
 	Synergon::EngineTempFunction();
@@ -9,14 +9,14 @@ int main(int argc, char **argv) {
 
 	// Temporary test code
 	{
-		Synergon::Core::WindowDescriptor descriptor;
+		Synergon::Window::WindowDescriptor descriptor;
 		descriptor.title      = "Test Window";
 		descriptor.width      = 800;
 		descriptor.height     = 800;
 		descriptor.fullscreen = false;
 		descriptor.resizable  = true;
 
-		Synergon::Core::Window window(descriptor);
+		Synergon::Window::Window window(descriptor);
 
 		while (!window.shouldClose()) {
 			window.pollEvents();

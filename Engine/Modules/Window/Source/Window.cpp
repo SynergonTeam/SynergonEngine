@@ -1,6 +1,6 @@
-#include "Synergon/Core/Window.hpp"
+#include "Synergon/Window/Window.hpp"
 
-namespace Synergon::Core {
+namespace Synergon::Window {
 
 	Window::Window(const WindowDescriptor& descriptor) {
 		m_Width  = descriptor.width;
