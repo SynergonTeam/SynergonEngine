@@ -4,9 +4,9 @@
 
 // Maybe do something like stdafx.h from the DirectX-Graphics-Samples repository on GitHub
 // link: https://github.com/microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12HelloWorld/src/HelloTriangle
+#include <wrl.h>
 #include <d3d12.h>
 #include <dxgi1_6.h>
-#include <wrl.h>
 #include <stdexcept>
 
 namespace Synergon::Rhi {
@@ -22,10 +22,12 @@ namespace Synergon::Rhi {
 	}
 
 	class HrException : public std::runtime_error {
-	public:
+	   public:
 		HrException(HRESULT hr) : std::runtime_error(HrToString(hr)), m_hr(hr) {}
+
 		HRESULT Error() const { return m_hr; }
-	private:
+
+	   private:
 		const HRESULT m_hr;
 	};
 
@@ -34,6 +36,7 @@ namespace Synergon::Rhi {
 			throw HrException(hr);
 		}
 	}
+
 	/************************************************************************************/
 
 	/**
@@ -47,12 +50,12 @@ namespace Synergon::Rhi {
 	 *       function CreateDx12Device.
 	 */
 	class Dx12Device final : public IDevice {
-	public:
+	   public:
 		Dx12Device();
 		~Dx12Device() override;
-		Dx12Device(const Dx12Device& other) = delete;
-		Dx12Device& operator=(const Dx12Device& other) = delete;
-		Dx12Device(Dx12Device &&other) noexcept        = delete;
+		Dx12Device(const Dx12Device &other)                = delete;
+		Dx12Device &operator=(const Dx12Device &other)     = delete;
+		Dx12Device(Dx12Device &&other) noexcept            = delete;
 		Dx12Device &operator=(Dx12Device &&other) noexcept = delete;
 
 		void waitIdle() const override;
@@ -67,7 +70,7 @@ namespace Synergon::Rhi {
 		std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor &descriptor) const override;
 		std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor &descriptor) const override;
 
-		std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const override;
+		std::shared_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const override;
 		std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor &descriptor) const override;
 
 		std::shared_ptr<IShader> createShader(const ShaderDescriptor &descriptor) const override;
@@ -78,21 +81,21 @@ namespace Synergon::Rhi {
 		std::shared_ptr<IShaderInputContainer> createShaderInputContainer(const ShaderInputContainerDescriptor &descriptor) const override;
 
 		std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor &descriptor) const override;
-		std::unique_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor &descriptor) const override;
-		std::unique_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const override;
+		std::shared_ptr<IPipeline>       createComputePipeline(const ComputePipelineDescriptor &descriptor) const override;
+		std::shared_ptr<IPipeline>       createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const override;
 
-		std::unique_ptr<IFence> createFence(const FenceDescriptor &descriptor) const override;
+		std::shared_ptr<IFence> createFence(const FenceDescriptor &descriptor) const override;
 
 		std::string loadShaderByteCodeFromPath(std::string_view path) const override;
 
 		inline Microsoft::WRL::ComPtr<ID3D12Device> getDevice() const { return m_Device; }
+
 		inline ID3D12Device *getDeviceRaw() const { return m_Device.Get(); }
 
 		inline void setDevice(Microsoft::WRL::ComPtr<ID3D12Device> device) { m_Device = device; }
 
-	private:
+	   private:
 		Microsoft::WRL::ComPtr<ID3D12Device> m_Device;
-
 	};
 
 	/**

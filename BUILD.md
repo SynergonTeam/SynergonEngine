@@ -3,12 +3,15 @@
 ## Prerequisites
 
 1. **CMake**: Version 3.20 or higher.
-2. **Vulkan SDK**: API Version 1.3
-3. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
-4. **Compiler**:
+2. **C/C++ compiler**: Any modern c/c++ compiler that supports c++20
+3. **Vulkan SDK**: API Version 1.3
+4. **vcpkg**: Ensure `VCPKG_CMAKE` environment variable is set to the path of `vcpkg.cmake`.
+5. **Compiler**:
     - **Windows**: Visual Studio (MSVC), GCC, CLANG
     - **Linux**: GCC, Clang
     - **Unix**: Makefiles, Ninja
+
+> **Llvm with MingW**: if you installed mingw with llvm and added them to the path togather, their linker (ld) will conflict. Thus, either one of them may not be able to configure and compile the project!
 
 ## Setting Up vcpkg
 
@@ -29,6 +32,32 @@
         ```
 
 ## Building the Project
+
+### CMakePresets.json
+
+1. Open a terminal and navigate to the project directory.
+2. List configure and build presets:
+    ```sh
+    cmake --list-presets configure
+    cmake --list-presets build
+    ```
+3. Configure the project using one of the configure presets:
+    ```sh
+    cmake --preset vs2022-shared
+    ```
+4. Build the project using one of the build presets:
+    ```sh
+    cmake --build --preset vs2022-shared-relwithdebinfo
+    ```
+5. Or use workflows
+    1. List available workflows:
+    ```sh
+    cmake --list-presets workflow
+    ```
+    2. Use the workflow to configure and build at once:
+    ```sh
+     cmake --workflow --preset ninja-clang-shared-release
+    ```
 
 ### Windows (MSVC)
 
@@ -133,7 +162,6 @@
     ```
 
 ## Build Options
-
 
 ### Common
 

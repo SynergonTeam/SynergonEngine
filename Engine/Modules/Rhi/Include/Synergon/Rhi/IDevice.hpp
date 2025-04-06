@@ -55,7 +55,7 @@ namespace Synergon::Rhi {
 		virtual std::shared_ptr<IBufferView>  createBufferView(const BufferViewDescriptor& descriptor) const   = 0;
 		virtual std::shared_ptr<ITextureView> createTextureView(const TextureViewDescriptor& descriptor) const = 0;
 
-		virtual std::unique_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<ICommandAllocator> createCommandAllocator(const CommandAllocatorDescriptor& descriptor) const = 0;
 		virtual std::unique_ptr<ICommandQueue>     createCommandQueue(const CommandQueueDescriptor& descriptor) const         = 0;
 
 		virtual std::shared_ptr<IShader> createShader(const ShaderDescriptor& descriptor) const = 0;
@@ -67,10 +67,10 @@ namespace Synergon::Rhi {
 
 		virtual std::shared_ptr<IPipelineLayout> createPipelineLayout(const PipelineLayoutDescriptor& descriptor) const = 0;
 
-		virtual std::unique_ptr<IPipeline> createComputePipeline(const ComputePipelineDescriptor& descriptor) const       = 0;
-		virtual std::unique_ptr<IPipeline> createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<IPipeline> createComputePipeline(const ComputePipelineDescriptor& descriptor) const       = 0;
+		virtual std::shared_ptr<IPipeline> createRasterizerPipeline(const RasterizerPipelineDescriptor& descriptor) const = 0;
 
-		virtual std::unique_ptr<IFence> createFence(const FenceDescriptor& descriptor) const = 0;
+		virtual std::shared_ptr<IFence> createFence(const FenceDescriptor& descriptor) const = 0;
 
 		virtual std::string loadShaderByteCodeFromPath(std::string_view path) const = 0;
 	};

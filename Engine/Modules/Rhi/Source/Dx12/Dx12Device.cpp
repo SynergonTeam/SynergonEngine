@@ -11,7 +11,7 @@ namespace Synergon::Rhi {
 		// *if i understand waitIdle() correctly
 		try {
 			waitIdle();
-		} catch (const std::exception& e) {
+		} catch (const std::exception &e) {
 			// Log the error but continue with destruction
 			// We might want to use your engine's logging system
 			OutputDebugStringA("Warning during Dx12Device destruction: Failed to wait for device idle state: ");
@@ -70,7 +70,7 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<ICommandAllocator> Dx12Device::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
+	std::shared_ptr<ICommandAllocator> Dx12Device::createCommandAllocator(const CommandAllocatorDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
@@ -102,15 +102,15 @@ namespace Synergon::Rhi {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> Dx12Device::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
+	std::shared_ptr<IPipeline> Dx12Device::createComputePipeline(const ComputePipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IPipeline> Dx12Device::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
+	std::shared_ptr<IPipeline> Dx12Device::createRasterizerPipeline(const RasterizerPipelineDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
-	std::unique_ptr<IFence> Dx12Device::createFence(const FenceDescriptor &descriptor) const {
+	std::shared_ptr<IFence> Dx12Device::createFence(const FenceDescriptor &descriptor) const {
 		throw std::logic_error("Not implemented yet");
 	}
 
@@ -144,20 +144,19 @@ namespace Synergon::Rhi {
 
 		// Inline adapter finding logic
 		{
-			IDXGIAdapter1* pAdapter = nullptr;
-			bool requestHighPerformanceAdapter = true;
+			IDXGIAdapter1 *pAdapter                      = nullptr;
+			bool           requestHighPerformanceAdapter = true;
 
 			Microsoft::WRL::ComPtr<IDXGIFactory6> factory6;
 			if (SUCCEEDED(factory->QueryInterface(IID_PPV_ARGS(&factory6)))) {
 				for (
-					UINT adapterIndex = 0;
-					SUCCEEDED(factory6->EnumAdapterByGpuPreference(
-						adapterIndex,
-						requestHighPerformanceAdapter ? DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE
-														: DXGI_GPU_PREFERENCE_UNSPECIFIED
-														, IID_PPV_ARGS(&hardwareAdapter)));
-					++adapterIndex)
-				{
+				    UINT adapterIndex = 0;
+				    SUCCEEDED(factory6->EnumAdapterByGpuPreference(
+				        adapterIndex,
+				        requestHighPerformanceAdapter ? DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE
+				                                      : DXGI_GPU_PREFERENCE_UNSPECIFIED,
+				        IID_PPV_ARGS(&hardwareAdapter)));
+				    ++adapterIndex) {
 					DXGI_ADAPTER_DESC1 desc;
 					hardwareAdapter->GetDesc1(&desc);
 
@@ -168,9 +167,10 @@ namespace Synergon::Rhi {
 
 					// Check to see whether the adapter supports Direct3D 12, but don't create the
 					// actual device yet.
+					//! "'_uuidof' was not declared in this scope", thus changed to __uuidof
+					//! and also, __uuidof need <initguid.h> header
 					if (
-						SUCCEEDED(D3D12CreateDevice(hardwareAdapter.Get()
-								, D3D_FEATURE_LEVEL_11_0, _uuidof(ID3D12Device), nullptr))) {
+					    SUCCEEDED(D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr))) {
 						break;
 					}
 
@@ -181,10 +181,9 @@ namespace Synergon::Rhi {
 			// Fallback to original enumeration method
 			if (hardwareAdapter.Get() == nullptr) {
 				for (
-					UINT adapterIndex = 0;
-					SUCCEEDED(factory->EnumAdapters1(adapterIndex, &hardwareAdapter));
-					++adapterIndex)
-				{
+				    UINT adapterIndex = 0;
+				    SUCCEEDED(factory->EnumAdapters1(adapterIndex, &hardwareAdapter));
+				    ++adapterIndex) {
 					DXGI_ADAPTER_DESC1 desc;
 					hardwareAdapter->GetDesc1(&desc);
 
@@ -195,9 +194,10 @@ namespace Synergon::Rhi {
 
 					// Check to see whether the adapter supports Direct3D 12, but don't create the
 					// actual device yet.
+					//! "'_uuidof' was not declared in this scope", thus changed to __uuidof
+					//! and also, __uuidof need <initguid.h> header
 					if (
-						SUCCEEDED(D3D12CreateDevice(hardwareAdapter.Get()
-								, D3D_FEATURE_LEVEL_11_0, _uuidof(ID3D12Device), nullptr))) {
+					    SUCCEEDED(D3D12CreateDevice(hardwareAdapter.Get(), D3D_FEATURE_LEVEL_11_0, __uuidof(ID3D12Device), nullptr))) {
 						break;
 					}
 
@@ -213,10 +213,9 @@ namespace Synergon::Rhi {
 		// Create D3D12 device
 		Microsoft::WRL::ComPtr<ID3D12Device> d3d12Device;
 		ThrowIfFailed(D3D12CreateDevice(
-			hardwareAdapter.Get(),
-			D3D_FEATURE_LEVEL_11_0,
-			IID_PPV_ARGS(&d3d12Device)
-		));
+		    hardwareAdapter.Get(),
+		    D3D_FEATURE_LEVEL_11_0,
+		    IID_PPV_ARGS(&d3d12Device)));
 
 		// Create and configure our device wrapper
 		auto device = std::make_unique<Dx12Device>();

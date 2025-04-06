@@ -15,7 +15,7 @@ namespace Synergon::Rhi {
 		std::shared_ptr<ITexture> texture;
 
 		uint32_t            mipLevel  = 0u;
-		uint32_t            origin[3] = {0u, 0u, 0u};
+		uint32_t            offset[3] = {0u, 0u, 0u};
 		TextureAspect::Type aspect    = TextureAspect::eColor;
 	};
 
@@ -51,7 +51,8 @@ namespace Synergon::Rhi {
 	   public:
 		virtual ~ICommandBuffer() = default;
 
-		virtual void reset() const = 0;
+		//! Reset the ICommandAllocator, not the individual ICommandBuffers!
+		// virtual void reset() const = 0;
 
 		virtual void open() const  = 0;
 		virtual void close() const = 0;
@@ -74,7 +75,8 @@ namespace Synergon::Rhi {
 
 		virtual void draw(uint32_t vertexCount, uint32_t instanceCount = 1u, uint32_t firstVertex = 0u, uint32_t firstInstance = 0u) const                                 = 0;
 		virtual void drawIndexed(uint32_t indexCount, uint32_t instanceCount = 1u, uint32_t firstIndex = 0u, int32_t vertexOffset = 0u, uint32_t firstInstance = 0u) const = 0;
-		// TODO: drawIndrect
+		virtual void drawIndirect(const std::shared_ptr<IBufferView>& indirectBuffer) const                                                                                = 0;
+		virtual void drawIndirectIndexed(const std::shared_ptr<IBufferView>& indirectBuffer) const                                                                         = 0;
 
 		virtual void bindComputePipeline(const std::shared_ptr<IPipeline>& pipeline) const                                             = 0;
 		virtual void bindComputeShaderInputContainer(uint32_t set, const std::shared_ptr<IShaderInputContainer>& inputContainer) const = 0;
