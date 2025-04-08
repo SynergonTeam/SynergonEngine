@@ -39,6 +39,7 @@ target_include_directories(SynergonEngine PUBLIC
 
 target_link_libraries(SynergonEngine PUBLIC
         SynergonCore
+        SynergonEvents
         SynergonRhi
         SynergonRpi
 )
