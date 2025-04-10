@@ -31,7 +31,7 @@ target_include_directories(SynergonWindow PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/Include
 )
 
-target_link_libraries(SynergonWindow PUBLIC glfw)
+target_link_libraries(SynergonWindow PRIVATE glfw)
 
 set_property(TARGET SynergonWindow PROPERTY FOLDER "Engine/Modules/Window")
 

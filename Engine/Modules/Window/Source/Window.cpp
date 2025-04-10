@@ -1,5 +1,23 @@
 #include "Synergon/Window/Window.hpp"
 
+#include "glfw/glfw3.h"
+
+#if defined(_WIN32)
+#	define GLFW_EXPOSE_NATIVE_WIN32
+
+#elif defined(__linux__)
+#	if defined(X11)
+#		define GLFW_EXPOSE_NATIVE_X11
+#	elif defined(WAYLAND)
+#		define GLFW_EXPOSE_NATIVE_WAYLAND
+#	endif
+
+#elif defined(__APPLE__)
+#	define GLFW_EXPOSE_NATIVE_COCOA
+
+#endif
+#include <GLFW/glfw3native.h>
+
 namespace Synergon::Window {
 
 	Window::Window(const WindowDescriptor& descriptor) {
@@ -84,4 +102,25 @@ namespace Synergon::Window {
 		glfwSetWindowSize(m_Window, m_Width, m_Height);
 	}
 
-}  // namespace Synergon::Core
+	NativeWindowHandle Window::getNativeWindowHandle() const {
+#ifdef _WIN32
+		return glfwGetWin32Window(m_Window);
+#elif defined(__linux__)
+
+#	if defined(X11)
+
+		return glfwGetX11Window(m_Window);
+
+#	elif defined(WAYLAND)
+		return glfwGetWaylandWindow(m_Window);
+#	endif
+
+#elif defined(__APPLE__)
+		return glfwGetCocoaWindow(m_Window);
+
+#else
+		static_assert(false, "Unsupported platform");
+#endif
+	}
+
+}  // namespace Synergon::Window

@@ -13,4 +13,4 @@ namespace Synergon::Window {
 		bool        resizable  = true;
 		bool        fullscreen = false;
 	};
-}  // namespace Synergon::Core
+}  // namespace Synergon::Window
