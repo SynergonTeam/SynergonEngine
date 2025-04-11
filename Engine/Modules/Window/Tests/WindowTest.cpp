@@ -13,7 +13,7 @@ TEST_P(WindowTest, WindowInitialization) {
 
 	Synergon::Window::Window window(descriptor);
 
-	ASSERT_NE(window.getWindow(), nullptr);
+	ASSERT_NE(window.getNativeWindowHandle(), nullptr);
 }
 
 INSTANTIATE_TEST_SUITE_P(
