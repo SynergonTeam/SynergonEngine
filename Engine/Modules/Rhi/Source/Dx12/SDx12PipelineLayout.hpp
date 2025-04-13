@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Synergon/Rhi/ISampler.hpp"
+#include "Synergon/Rhi/IPipelineLayout.hpp"
 
 namespace Synergon::Rhi {
-
-	class Dx12Sampler : public ISampler {
+	class SDx12PipelineLayout : public IPipelineLayout {
 	   public:
 	   private:
 	};
-
 }  // namespace Synergon::Rhi

@@ -1,6 +1,6 @@
 #pragma once
 
 namespace Synergon::Rhi {
-	class Dx12Shader {
+	class SDx12Shader {
 	};
 }  // namespace Synergon::Rhi

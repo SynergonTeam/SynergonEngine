@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Synergon/Rhi/IPipelineLayout.hpp"
+#include "Synergon/Rhi/IPipeline.hpp"
 
 namespace Synergon::Rhi {
-	class Dx12PipelineLayout : public IPipelineLayout {
+	class SDx12Pipeline : public IPipeline {
 	   public:
 	   private:
 	};
+
 }  // namespace Synergon::Rhi
