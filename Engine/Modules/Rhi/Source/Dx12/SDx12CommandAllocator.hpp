@@ -6,7 +6,7 @@
 #include <memory>
 
 namespace Synergon::Rhi {
-	class Dx12CommandAllocator final : public ICommandAllocator {
+	class SDx12CommandAllocator final : public ICommandAllocator {
 	   public:
 		std::unique_ptr<ICommandBuffer> allocateCommandBuffer(CommandBufferDescriptor descriptor) override;
 

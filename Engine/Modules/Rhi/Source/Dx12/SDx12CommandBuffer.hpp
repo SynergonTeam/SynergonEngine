@@ -3,6 +3,6 @@
 #include "Synergon/Rhi/ICommandBuffer.hpp"
 
 namespace Synergon::Rhi {
-	class Dx12CommandBuffer : public ICommandBuffer {
+	class SDx12CommandBuffer : public ICommandBuffer {
 	};
 }  // namespace Synergon::Rhi

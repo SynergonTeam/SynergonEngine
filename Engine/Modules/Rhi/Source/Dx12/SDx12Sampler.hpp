@@ -1,10 +1,12 @@
 #pragma once
 
-#include "Synergon/Rhi/IFence.hpp"
+#include "Synergon/Rhi/ISampler.hpp"
 
 namespace Synergon::Rhi {
-	class Dx12Fence : public IFence {
+
+	class SDx12Sampler : public ISampler {
 	   public:
 	   private:
 	};
+
 }  // namespace Synergon::Rhi

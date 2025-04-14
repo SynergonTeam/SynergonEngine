@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Synergon/Rhi/IBuffer.hpp"
+#include "Synergon/Rhi/IFence.hpp"
 
 namespace Synergon::Rhi {
-	class Dx12Buffer : public IBuffer {
+	class SDx12Fence : public IFence {
 	   public:
 	   private:
 	};

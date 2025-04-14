@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Synergon/Rhi/IPipeline.hpp"
+#include "Synergon/Rhi/IBuffer.hpp"
 
 namespace Synergon::Rhi {
-	class Dx12Pipeline : public IPipeline {
+	class SDx12Buffer : public IBuffer {
 	   public:
 	   private:
 	};
-
 }  // namespace Synergon::Rhi

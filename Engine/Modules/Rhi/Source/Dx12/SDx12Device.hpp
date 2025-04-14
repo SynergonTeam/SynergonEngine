@@ -49,14 +49,14 @@ namespace Synergon::Rhi {
 	 * @note This class is not intended to be used directly, but through the engine's device factory
 	 *       function CreateDx12Device.
 	 */
-	class Dx12Device final : public IDevice {
+	class SDx12Device final : public IDevice {
 	   public:
-		Dx12Device();
-		~Dx12Device() override;
-		Dx12Device(const Dx12Device &other)                = delete;
-		Dx12Device &operator=(const Dx12Device &other)     = delete;
-		Dx12Device(Dx12Device &&other) noexcept            = delete;
-		Dx12Device &operator=(Dx12Device &&other) noexcept = delete;
+		SDx12Device();
+		~SDx12Device() override;
+		SDx12Device(const SDx12Device &other)                = delete;
+		SDx12Device &operator=(const SDx12Device &other)     = delete;
+		SDx12Device(SDx12Device &&other) noexcept            = delete;
+		SDx12Device &operator=(SDx12Device &&other) noexcept = delete;
 
 		void waitIdle() const override;
 		void waitForFences(std::span<std::shared_ptr<IFence>> fences) const override;
