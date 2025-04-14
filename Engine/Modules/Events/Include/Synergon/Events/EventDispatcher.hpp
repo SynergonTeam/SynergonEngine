@@ -18,22 +18,22 @@ namespace Synergon::Events {
 
 		template <typename Event, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
 		void addEvent(const Event& event) {
-			const size_t eventHashCode = typeid(Event).hash_code();
+			const IEventType eventType = typeid(Event);
 
-			if (m_IEventVectorMap.find(eventHashCode) != m_IEventVectorMap.end()) {
-				m_IEventVectorMap[eventHashCode] = std::make_unique<EventVector<Event>>();
+			if (m_IEventVectorMap.find(eventType) == m_IEventVectorMap.end()) {
+				m_IEventVectorMap[eventType] = std::make_unique<EventVector<Event>>();
 			}
 
-			EventVector<Event>* pEventVector = dynamic_cast<EventVector<Event>*>(m_IEventVectorMap[eventHashCode].get());
+			EventVector<Event>* pEventVector = dynamic_cast<EventVector<Event>*>(m_IEventVectorMap[eventType].get());
 
-			m_IEventIndicesMap[eventHashCode].push_back(pEventVector->size());
+			m_IEventIndicesMap[eventType].push_back(pEventVector->size());
 			pEventVector->add(event);
 		}
 
 		void dispatch() {
-			for (const auto& [eventHashCode, eventIndices] : m_IEventIndicesMap) {
-				const auto& callbacks    = m_IEventTypeCallbackMap[eventHashCode];
-				const auto& iEventVector = m_IEventVectorMap[eventHashCode];
+			for (const auto& [eventType, eventIndices] : m_IEventIndicesMap) {
+				const auto& callbacks    = m_IEventTypeCallbackMap[eventType];
+				const auto& iEventVector = m_IEventVectorMap[eventType];
 
 				for (const auto& [_, callback] : callbacks)
 					for (const uint32_t& eventIndex : eventIndices)
@@ -73,7 +73,7 @@ namespace Synergon::Events {
 		};
 
 	   private:
-		std::map<size_t, std::unique_ptr<IEventVector>> m_IEventVectorMap;
-		std::map<size_t, std::vector<std::uint32_t>>    m_IEventIndicesMap;
+		std::map<IEventType, std::unique_ptr<IEventVector>> m_IEventVectorMap;
+		std::map<IEventType, std::vector<std::uint32_t>>    m_IEventIndicesMap;
 	};
 }  // namespace Synergon::Events

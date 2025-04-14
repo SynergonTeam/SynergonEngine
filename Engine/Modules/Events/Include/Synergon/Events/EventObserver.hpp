@@ -10,9 +10,9 @@ namespace Synergon::Events {
 
 		template <typename Event, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
 		void process(const Event& event) {
-			const size_t eventHashCode = typeid(Event).hash_code();
+			const IEventType eventType = typeid(Event);
 
-			const auto& callbacks = m_IEventTypeCallbackMap[eventHashCode];
+			const auto& callbacks = m_IEventTypeCallbackMap[eventType];
 
 			for (const auto& [_, callback] : callbacks) {
 				callback(&event);

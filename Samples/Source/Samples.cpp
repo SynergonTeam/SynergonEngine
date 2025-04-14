@@ -73,7 +73,7 @@ namespace Synergon {
 				}
 
 				m_EventDispatcher.dispatch();
-			} while (counter != 100);
+			} while (counter++ != 100);
 		}
 
 		void windowResizeCallackForDispatcher(const WindowResizeEvent& event) {

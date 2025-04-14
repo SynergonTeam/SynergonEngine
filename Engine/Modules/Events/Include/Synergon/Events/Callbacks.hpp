@@ -20,12 +20,12 @@ namespace Synergon::Events {
 		ACallbackMannager()          = default;
 		virtual ~ACallbackMannager() = default;
 
-		template <typename Event, typename Callback, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
-		EventCallbackHandle addCallback(Callback &&callback) {
-			const IEventType   eventType = typeid(Event).hash_code();
+		template <typename Event, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
+		EventCallbackHandle addCallback(std::function<void(const Event &)> &&callback) {
+			const IEventType   eventType = typeid(Event);
 			IEventCallbackMap &callbacks = m_IEventTypeCallbackMap[eventType];
 
-			const EventCallbackHandle handle = callbacks.size();
+			const EventCallbackHandle handle = m_NextEventCallbackHandle++;
 
 			callbacks[handle] = [callback = callback](const IEvent *event) {
 				callback(*static_cast<const Event *>(event));
@@ -35,10 +35,10 @@ namespace Synergon::Events {
 
 		template <typename Event, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
 		EventCallbackHandle addCallback(EventCallback<Event> callback) {
-			const IEventType   eventType = typeid(Event).hash_code();
+			const IEventType   eventType = typeid(Event);
 			IEventCallbackMap &callbacks = m_IEventTypeCallbackMap[eventType];
 
-			const EventCallbackHandle handle = callbacks.size();
+			const EventCallbackHandle handle = m_NextEventCallbackHandle++;
 
 			callbacks[handle] = [callback = callback](const IEvent *event) {
 				callback(*static_cast<const Event *>(event));
@@ -48,10 +48,10 @@ namespace Synergon::Events {
 
 		template <typename Event, typename T, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
 		EventCallbackHandle addCallback(T *self, void (T::*callback)(const Event &event)) {
-			const IEventType   eventType = typeid(Event).hash_code();
+			const IEventType   eventType = typeid(Event);
 			IEventCallbackMap &callbacks = m_IEventTypeCallbackMap[eventType];
 
-			const EventCallbackHandle handle = callbacks.size();
+			const EventCallbackHandle handle = m_NextEventCallbackHandle++;
 
 			callbacks[handle] = [callback = callback, self = self](const IEvent *event) {
 				(self->*callback)(*static_cast<const Event *>(event));
@@ -61,17 +61,19 @@ namespace Synergon::Events {
 
 		template <typename Event, typename = std::enable_if_t<std::is_base_of<IEvent, Event>::value>>
 		void removeCallback(EventCallbackHandle handle) {
-			const IEventType   eventType = typeid(Event).hash_code();
+			const IEventType   eventType = typeid(Event);
 			IEventCallbackMap &callbacks = m_IEventTypeCallbackMap[eventType];
 			callbacks.erase(handle);
 		}
 
 	   protected:
-		using IEventType        = uint32_t;
+		using IEventType        = std::type_index;
 		using IEventCallback    = std::function<void(const IEvent *)>;
 		using IEventCallbackMap = std::map<EventCallbackHandle, IEventCallback>;
 
 	   protected:
-		std::map<IEventType, IEventCallbackMap> m_IEventTypeCallbackMap;
+		std::map<IEventType, IEventCallbackMap> m_IEventTypeCallbackMap{};
+
+		EventCallbackHandle m_NextEventCallbackHandle{0};
 	};
 }  // namespace Synergon::Events
