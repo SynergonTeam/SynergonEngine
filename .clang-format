@@ -1,17 +1,17 @@
-BasedOnStyle: Google
-IndentWidth: 4
-TabWidth: 4
-AllowShortIfStatementsOnASingleLine: true
-IndentCaseLabels: true
-ColumnLimit: 0
-NamespaceIndentation: All
-FixNamespaceComments: true
-SortIncludes: Never
-PointerAlignment: Right
-ReferenceAlignment: Right
-AlignConsecutiveAssignments: true
-AlignConsecutiveDeclarations: true
-AlignTrailingComments: true
-IndentPPDirectives: AfterHash
-UseTab: ForIndentation
-SeparateDefinitionBlocks: Always
+  BasedOnStyle: Google
+  IndentWidth: 4
+  TabWidth: 4
+  AllowShortIfStatementsOnASingleLine: true
+  IndentCaseLabels: true
+  ColumnLimit: 0
+  NamespaceIndentation: All
+  FixNamespaceComments: true
+  SortIncludes: Never
+  PointerAlignment: Right
+  ReferenceAlignment: Right
+  AlignConsecutiveAssignments: true
+  AlignConsecutiveDeclarations: true
+  AlignTrailingComments: true
+  IndentPPDirectives: AfterHash
+  UseTab: ForIndentation
+  SeparateDefinitionBlocks: Always

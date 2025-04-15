@@ -3,6 +3,12 @@
 #include <cstdint>
 
 namespace Synergon::Rhi {
+	enum class ApiChoice {
+		eDirectx12,
+		eVulkan,
+		eCustom,
+	};
+
 	enum class MemoryUsage {
 		eGpu      = 0,
 		eCpu      = 1,

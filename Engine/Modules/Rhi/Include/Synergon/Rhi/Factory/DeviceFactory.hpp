@@ -1,17 +1,12 @@
 #pragma once
 
 #include "Synergon/Rhi/IDevice.hpp"
+#include "Synergon/Rhi/Enums.hpp"
 
 #include <memory>
 #include <functional>
 
 namespace Synergon::Rhi {
-	enum class ApiChoice {
-		eDirectx12,
-		eVulkan,
-		eCustom,
-	};
-
 	using DeviceFactoryFunc = std::function<std::unique_ptr<IDevice>()>;
 
 	class DeviceFactory {

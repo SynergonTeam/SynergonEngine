@@ -1,4 +1,9 @@
-#include "TestClasses.hpp"
+#include "TestApiClasses.hpp"
+
+#include "Utils.hpp"
+
+#include "Synergon/Rhi/Factory/DeviceFactory.hpp"
+
 #include "Synergon/Core/FileHelpers.hpp"
 
 namespace Synergon::Rhi {

@@ -1,22 +1,9 @@
 #pragma once
 
-#include "Synergon/Rhi/Factory/DeviceFactory.hpp"
-
 #include <gtest/gtest.h>
 #include <string>
 
 namespace Synergon::Rhi {
-	inline ApiChoice StringToApiChoice(const std::string& apiChoice) {
-		if (apiChoice == "Directx12") {
-			return ApiChoice::eDirectx12;
-		}
-		if (apiChoice == "Vulkan") {
-			return ApiChoice::eVulkan;
-		}
-
-		return ApiChoice::eCustom;
-	}
-
 	class DeviceTest : public ::testing::TestWithParam<std::string> {};
 
 	class BufferTest : public ::testing::TestWithParam<std::string> {};
@@ -50,6 +37,4 @@ namespace Synergon::Rhi {
 	class ShaderTest : public ::testing::TestWithParam<std::string> {};
 
 	class ShaderInputPoolTest : public ::testing::TestWithParam<std::string> {};
-
-	class RenderTest : public ::testing::TestWithParam<std::string> {};
 }  // namespace Synergon::Rhi

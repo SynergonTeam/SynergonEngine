@@ -1,4 +1,6 @@
-#include "TestClasses.hpp"
+#include "TestApiClasses.hpp"
+
+#include "SimpleTriangleRenderTest.hpp"
 
 namespace Synergon::Rhi {
 	INSTANTIATE_TEST_SUITE_P(
@@ -53,7 +55,7 @@ namespace Synergon::Rhi {
 	    TestsShaderInputPool, ShaderInputPoolTest,
 	    ::testing::Values("Vulkan", "Directx12"));
 	INSTANTIATE_TEST_SUITE_P(
-	    TestsRender, RenderTest,
+	    TestsRender, SimpleTriangleRenderTest,
 	    ::testing::Values("Vulkan", "Directx12"));
 }  // namespace Synergon::Rhi
 
