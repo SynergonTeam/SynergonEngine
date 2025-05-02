@@ -55,63 +55,7 @@ namespace Synergon::Rhi {
 	}
 
 	std::shared_ptr<ITexture> SDx12Device::createTexture(const TextureDescriptor &descriptor) const {
-		// Describe and create a Texture2D.
-		D3D12_RESOURCE_DESC textureDesc = {};
-
-		// Type of texture (1D, 2D, 3D, or cube).
-		// Defines the dimensionality and how the texture is accessed in shaders.
-		textureDesc.Dimension = SDx12Utils::textureDimensionToDX12(descriptor.dimension);
-
-		// Alignment of the texture data in memory.
-		// Alignment may be one of 0, 4KB, 64KB or 4MB.
-		// If Alignment is set to 0, the runtime will use 4MB for MSAA textures and 64KB for everything else.
-		// The application may choose smaller alignments than these defaults for a couple of texture types
-		// when the texture is small. Textures with UNKNOWN layout and MSAA may be created with
-		// 64KB alignment.
-		textureDesc.Alignment = 0;
-
-		// Width of the texture in pixels.
-		textureDesc.Width = descriptor.width;
-
-		// Height of the texture in pixels.
-		textureDesc.Height = descriptor.height;
-
-		// For 3D textures - depth in pixels. For texture arrays - number of textures in the array.
-		textureDesc.DepthOrArraySize = descriptor.depth;
-
-		// Number of detail levels (mip levels) of the texture.
-		// Used to store the texture at different resolutions for optimized rendering at various distances.
-		textureDesc.MipLevels = descriptor.mipLevels;
-
-		// Pixel format of the texture (e.g., R8G8B8A8_UNORM, R32G32B32A32_FLOAT, etc.).
-		// Defines how the data will be stored and interpreted by the graphics processor.
-		textureDesc.Format = SDx12Utils::textureFormatToDXGI(descriptor.format);
-
-		// Multisampling settings for edge smoothing.
-		// Count - number of samples per pixel (1 means no multisampling).
-		textureDesc.SampleDesc.Count = descriptor.sampleCount;
-
-		// Quality level of multisampling (usually 0 for standard quality).
-		textureDesc.SampleDesc.Quality = 0;
-
-		// Layout of the texture data in memory.
-		// D3D12_TEXTURE_LAYOUT_UNKNOWN means let driver optimize it for GPU.
-		// or use D3D12_TEXTURE_LAYOUT_ROW_MAJOR?
-		textureDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
-
-		// Resource flags that define additional properties (e.g., support for rendering to texture).
-		// D3D12_RESOURCE_FLAG_NONE means no special properties are required.
-		textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
-#if 0
-		SDx12Utils::ThrowIfFailed(m_Device->CreateCommittedResource(
-			&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT),
-			D3D12_HEAP_FLAG_NONE,
-			&textureDesc,
-			D3D12_RESOURCE_STATE_COPY_DEST,
-			nullptr,
-			IID_PPV_ARGS(&m_Texture)));
-#endif
-		return nullptr;
+		return std::make_shared<SDx12Texture>(m_Device, descriptor);
 	}
 
 	std::shared_ptr<ISampler> SDx12Device::createSampler(const SamplerDescriptor &descriptor) const {

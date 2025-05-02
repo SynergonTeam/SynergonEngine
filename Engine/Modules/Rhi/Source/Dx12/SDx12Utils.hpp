@@ -92,11 +92,25 @@ namespace Synergon::Rhi {
 		static D3D12_RESOURCE_DIMENSION textureDimensionToDX12(TextureDimension dim);
 
 		/**
+		 * @brief Converts DirectX 12 DXGI format to engine texture format
+		 * @param DirectX12 format The DirectX 12 DXGI format
+		 * @return Engine texture format
+		 */
+		static TextureDimension dx12ToTextureDimension(D3D12_RESOURCE_DIMENSION dim);
+
+		/**
 		 * @brief Converts engine texture format to DirectX 12 DXGI format
 		 * @param format The engine texture format
 		 * @return DXGI format
 		 */
 		static DXGI_FORMAT textureFormatToDXGI(TextureFormat format);
+
+		/**
+		 * @brief Converts DirectX 12 DXGI format to engine texture format
+		 * @param format The DirectX 12 DXGI format
+		 * @return Engine texture format
+		 */
+		static TextureFormat dxgiToTextureFormat(DXGI_FORMAT format);
 	};
 
 } // namespace Synergon::Rhi

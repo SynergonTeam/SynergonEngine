@@ -72,4 +72,62 @@ namespace Synergon::Rhi {
 		}
 	}
 
+	TextureDimension SDx12Utils::dx12ToTextureDimension(D3D12_RESOURCE_DIMENSION dim) {
+		switch (dim) {
+			case D3D12_RESOURCE_DIMENSION_TEXTURE1D: return TextureDimension::e1D;
+			case D3D12_RESOURCE_DIMENSION_TEXTURE2D: return TextureDimension::e2D;
+			case D3D12_RESOURCE_DIMENSION_TEXTURE3D: return TextureDimension::e3D;
+			default:                               return TextureDimension::e2D;
+		}
+	}
+
+	TextureFormat SDx12Utils::dxgiToTextureFormat(DXGI_FORMAT format) {
+		switch (format) {
+			case DXGI_FORMAT_R8_UNORM:              return TextureFormat::eR8Unorm;
+			case DXGI_FORMAT_R8_SNORM:              return TextureFormat::eR8Snorm;
+			case DXGI_FORMAT_R8_UINT:               return TextureFormat::eR8Uint;
+			case DXGI_FORMAT_R8_SINT:               return TextureFormat::eR8Sint;
+			case DXGI_FORMAT_R16_UNORM:             return TextureFormat::eR16Unorm;
+			case DXGI_FORMAT_R16_SNORM:             return TextureFormat::eR16Snorm;
+			case DXGI_FORMAT_R16_UINT:              return TextureFormat::eR16Uint;
+			case DXGI_FORMAT_R16_SINT:              return TextureFormat::eR16Sint;
+			case DXGI_FORMAT_R16_FLOAT:             return TextureFormat::eR16Float;
+			case DXGI_FORMAT_R32_UINT:              return TextureFormat::eR32Uint;
+			case DXGI_FORMAT_R32_SINT:              return TextureFormat::eR32Sint;
+			case DXGI_FORMAT_R32_FLOAT:             return TextureFormat::eR32Float;
+			case DXGI_FORMAT_R8G8_UNORM:            return TextureFormat::eRG8Unorm;
+			case DXGI_FORMAT_R8G8_SNORM:            return TextureFormat::eRG8Snorm;
+			case DXGI_FORMAT_R8G8_UINT:             return TextureFormat::eRG8Uint;
+			case DXGI_FORMAT_R8G8_SINT:             return TextureFormat::eRG8Sint;
+			case DXGI_FORMAT_R16G16_UNORM:          return TextureFormat::eRG16Unorm;
+			case DXGI_FORMAT_R16G16_SNORM:          return TextureFormat::eRG16Snorm;
+			case DXGI_FORMAT_R16G16_UINT:           return TextureFormat::eRG16Uint;
+			case DXGI_FORMAT_R16G16_SINT:           return TextureFormat::eRG16Sint;
+			case DXGI_FORMAT_R16G16_FLOAT:          return TextureFormat::eRG16Float;
+			case DXGI_FORMAT_R32G32_UINT:           return TextureFormat::eRG32Uint;
+			case DXGI_FORMAT_R32G32_SINT:           return TextureFormat::eRG32Sint;
+			case DXGI_FORMAT_R32G32_FLOAT:          return TextureFormat::eRG32Float;
+			case DXGI_FORMAT_R32G32B32_UINT:        return TextureFormat::eRGB32Uint;
+			case DXGI_FORMAT_R32G32B32_SINT:        return TextureFormat::eRGB32Sint;
+			case DXGI_FORMAT_R32G32B32_FLOAT:       return TextureFormat::eRGB32Float;
+			case DXGI_FORMAT_R8G8B8A8_UNORM:        return TextureFormat::eRGBA8Unorm;
+			case DXGI_FORMAT_R8G8B8A8_SNORM:        return TextureFormat::eRGBA8Snorm;
+			case DXGI_FORMAT_R8G8B8A8_UINT:         return TextureFormat::eRGBA8Uint;
+			case DXGI_FORMAT_R8G8B8A8_SINT:         return TextureFormat::eRGBA8Sint;
+			case DXGI_FORMAT_R16G16B16A16_UNORM:    return TextureFormat::eRGBA16Unorm;
+			case DXGI_FORMAT_R16G16B16A16_SNORM:    return TextureFormat::eRGBA16Snorm;
+			case DXGI_FORMAT_R16G16B16A16_UINT:     return TextureFormat::eRGBA16Uint;
+			case DXGI_FORMAT_R16G16B16A16_SINT:     return TextureFormat::eRGBA16Sint;
+			case DXGI_FORMAT_R16G16B16A16_FLOAT:    return TextureFormat::eRGBA16Float;
+			case DXGI_FORMAT_R32G32B32A32_UINT:     return TextureFormat::eRGBA32Uint;
+			case DXGI_FORMAT_R32G32B32A32_SINT:     return TextureFormat::eRGBA32Sint;
+			case DXGI_FORMAT_R32G32B32A32_FLOAT:    return TextureFormat::eRGBA32Float;
+			case DXGI_FORMAT_D16_UNORM:             return TextureFormat::eDepth16Unorm;
+			case DXGI_FORMAT_D32_FLOAT:             return TextureFormat::eDepth32Float;
+			case DXGI_FORMAT_D24_UNORM_S8_UINT:     return TextureFormat::eDepth24Stencil8;
+			case DXGI_FORMAT_D32_FLOAT_S8X24_UINT:  return TextureFormat::eDepth32FloatStencil8;
+			default:                                return TextureFormat::eRGBA8Unorm;
+		}
+	}
+
 } // namespace Synergon::Rhi
