@@ -8,7 +8,7 @@
 #include <memory>
 
 #define D3D12_TEXTURE_DESC(d3d12_texture) \
-	D3D12_RESOURCE_DESC desc_;            \
+	D3D12_RESOURCE_DESC desc_ = {};       \
 	if (d3d12_texture) {                  \
 		desc_ = d3d12_texture->GetDesc(); \
 	}

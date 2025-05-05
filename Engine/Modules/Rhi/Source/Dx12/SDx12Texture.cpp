@@ -51,19 +51,34 @@ namespace Synergon::Rhi {
 		// D3D12_RESOURCE_FLAG_NONE means no special properties are required.
 		textureDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
-#if 0
 		// Miscellaneous flags that define additional properties of the resource.
 		D3D12_HEAP_PROPERTIES heapProperties = {};
+
+		// Specifies the type of heap. When resident, heaps reside in a particular physical
+		// memory pool with certain CPU cache properties.
 		heapProperties.Type = D3D12_HEAP_TYPE_DEFAULT;
-#endif
+
+		// Specifies the CPU page property for the heap.
+		heapProperties.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+
+		// Specifies the memory pool preference for the heap.
+		heapProperties.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+
+		// Specifies the creation node mask for the heap.
+		heapProperties.CreationNodeMask = 1;
+
+		// Specifies the visible node mask for the heap.
+		heapProperties.VisibleNodeMask = 1;
 
 		SDx12Utils::ThrowIfFailed(device->CreateCommittedResource(
-			&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT),
+			&heapProperties,
 			D3D12_HEAP_FLAG_NONE,
 			&textureDesc,
 			D3D12_RESOURCE_STATE_COPY_DEST,
 			nullptr,
 			IID_PPV_ARGS(&m_Texture)));
+
+		volatile int t = 0;
 	}
 
 	TextureFormat SDx12Texture::getFormat() const {
