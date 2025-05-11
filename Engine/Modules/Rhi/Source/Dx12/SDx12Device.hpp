@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Synergon/Rhi/IDevice.hpp"
+#include "SDx12Buffer.hpp"
 #include "SDx12Texture.hpp"
 #include "SDx12Utils.hpp"
 

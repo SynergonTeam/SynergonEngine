@@ -51,7 +51,7 @@ namespace Synergon::Rhi {
 	}
 
 	std::shared_ptr<IBuffer> SDx12Device::createBuffer(const BufferDescriptor &descriptor) const {
-		throw std::logic_error("Not implemented yet");
+		throw std::make_shared<SDx12Buffer>(m_Device, descriptor);
 	}
 
 	std::shared_ptr<ITexture> SDx12Device::createTexture(const TextureDescriptor &descriptor) const {

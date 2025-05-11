@@ -77,8 +77,6 @@ namespace Synergon::Rhi {
 			D3D12_RESOURCE_STATE_COPY_DEST,
 			nullptr,
 			IID_PPV_ARGS(&m_Texture)));
-
-		volatile int t = 0;
 	}
 
 	TextureFormat SDx12Texture::getFormat() const {
